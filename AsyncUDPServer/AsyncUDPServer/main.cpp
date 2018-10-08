@@ -24,9 +24,6 @@ using namespace boost::posix_time;
 
 boost::asio::io_service io_service;
 
-//boost::shared_ptr<exoModule> pNucleo_1(new exoModule(io_service, "127.0.0.1", "Nucleo1")); //"12.0.4.239"
-
-
 exoModule pModule1(io_service, "12.0.3.248", "Module1");
 std::vector<exoModule*> exoModules = { &pModule1 };
 
@@ -56,8 +53,6 @@ exoMotor MotorI("I", pModule1);
 exoMotor MotorJ("J", pModule1);
 
 std::vector<exoMotor*> exoMotors = { &MotorA };
-//exoSensor SensorB("B", pModule1);
-//exoModule* exoModules[1] = { &pModule1 };
 
 //-------------------------------------------------------------------------------------------
 
@@ -142,7 +137,6 @@ int main(int argc, char* argv[])
 
 		boost::asio::deadline_timer exo_time(io_service, boost::posix_time::millisec(2));
 		exo_time.async_wait(boost::bind(MainExo, boost::asio::placeholders::error, &exo_time));
-
 
 		//boost::asio::deadline_timer t(io_service, boost::posix_time::seconds(1));
 		//t.async_wait(boost::bind(print, boost::asio::placeholders::error, &t));
