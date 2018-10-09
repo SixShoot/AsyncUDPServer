@@ -3,19 +3,9 @@
 #define SIZE_BUFF 1024
 
 #include <cstdlib>
-#include <iostream>
 
 namespace exo
 {
-
-struct exoItemPack
-{
-	std::string   header;
-	uint8_t		  value_size;
-	uint16_t      index;
-};
-
-
 
 	class exoPackage
 	{
@@ -34,25 +24,19 @@ struct exoItemPack
 			return set_item_index;
 		}
 		//-----------------------------------------------------------------------------------
-		std::string write_pack()
-		{
-			return std::string(buff, set_item_index);
-		}
-		//-----------------------------------------------------------------------------------
 		template < typename T >
-		void set(std::string str, T& value)
+		void set(const char *str, T& value)
 		{
-			for (int i = 0; i < buff[0]; i++)
+			uint16_t index = GetIndexData(str);
+			if (index != 0)
 			{
-				if (ItemList[i].header == str)
-				{
-					for (int j = 0; j < ItemList[i].value_size; j++) buff[ItemList[i].index + j] = ((uint8_t*)&value)[j];
-					return;
-				}
-			}
+				uint8_t value_size = sizeof(T);
+				for (int i = 0; i < value_size; i++) buff[index+i] = ((uint8_t*)&value)[i];
+				return;
+			}						
 
 			buff[0] = buff[0] + 1;
-			uint8_t header_size = str.size();
+			uint8_t header_size = strlen(str);
 			buff[set_item_index] = header_size;
 			for (int i = 0; i < header_size; i++) buff[set_item_index + i + 1] = str[i];
 
@@ -60,22 +44,46 @@ struct exoItemPack
 			buff[set_item_index + header_size + 1] = value_size;
 			for (int i = 0; i < value_size; i++) buff[set_item_index + header_size + i + 2] = ((uint8_t*)&value)[i];
 
-
-			exoItemPack Item;
-			Item.header = str;
-			Item.value_size = value_size;
-			Item.index = set_item_index + header_size + 2;
-			ItemList[buff[0] - 1] = Item;
-
-
 			set_item_index += header_size + value_size + 2;
 		}
 
+		//-----------------------------------------------------------------------------------
+		uint16_t GetIndexData(const char *str)
+		{
+			// Чтение 
+			for (int i = 0; i < buff[0]; i++)
+			{
+				uint8_t header_size = buff[get_item_index];
+
+				char *header = new char[header_size + 1];
+
+				for (int h = 0; h < header_size; h++) header[h] = buff[get_item_index + h + 1];
+				header[header_size] = '\0';
+
+				uint8_t value_size = buff[get_item_index + header_size + 1];
+
+				if (strcmp(str, header) == 0)
+				{
+					delete header;
+					uint16_t ind = get_item_index + header_size + 2;
+					get_item_index = 1;
+					return ind;
+				}
+				else
+				{
+					delete header;
+					get_item_index += header_size + value_size + 2;
+				}
+			}
+			get_item_index = 1;
+			return 0;
+		}
 		//-----------------------------------------------------------------------------------
 
 		template < typename T >
 		T get(const char *str, T default_)
 		{
+			/*
 			// Чтение 
 			for (int i = 0; i < buff[0]; i++)
 			{
@@ -104,6 +112,17 @@ struct exoItemPack
 			}
 			get_item_index = 1;
 			return default_;
+			*/
+			uint16_t index = GetIndexData(str);
+			if (index != 0)
+			{
+				uint8_t value_size = buff[index-1];
+				uint8_t read_buffer[8];
+				for (int j = 0; j < value_size; j++) read_buffer[j] = buff[index + j];
+				return *(T*)read_buffer;
+			}
+
+			return default_;
 		}
 		//-----------------------------------------------------------------------------------
 		~exoPackage()
@@ -114,7 +133,5 @@ struct exoItemPack
 	private:
 		uint16_t set_item_index;
 		uint16_t get_item_index;
-
-		exoItemPack ItemList[100];
 	};
 }

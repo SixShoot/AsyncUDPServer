@@ -20,6 +20,8 @@
 #include "exoMotor.h"
 #include "ConsoleTerminal.h"
 
+#include "exoPackage.hpp"
+
 using namespace boost::posix_time;
 
 boost::asio::io_service io_service;
@@ -121,6 +123,31 @@ void MainExo(const boost::system::error_code& /*e*/, boost::asio::deadline_timer
 //----------------------------------------------------------------------------------------
 int main(int argc, char* argv[])
 {
+	exo::exoPackage Pack;
+
+	
+	int fgdfg = 234;
+	Pack.set<int>("Vovik", fgdfg);
+
+	uint16_t v2 = 3423;
+	Pack.set<uint16_t>("Vok", v2);
+
+
+	fgdfg = 9876;
+	Pack.set<int>("Vovik", fgdfg);
+	
+	fgdfg = 123;
+	Pack.set<int>("LOL", fgdfg);
+
+	//-----------------
+
+	int dd = Pack.get<int>("Vovik", 0);
+
+	int dd2 = Pack.get<int>("LOL", 0);
+
+	int dfgdg = 435;
+	
+	/*
 	// Initialize the logger that will be measured.
 	plog::init(plog::debug, "logs\\log.txt", 1000000, 10); 
 
@@ -151,6 +178,7 @@ int main(int argc, char* argv[])
 	}
 
 	//thr.join();
+	*/
 
 	return 0;
 }
