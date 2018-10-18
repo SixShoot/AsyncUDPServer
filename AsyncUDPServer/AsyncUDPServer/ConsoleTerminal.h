@@ -14,7 +14,7 @@ volatile sig_atomic_t flag = 0;
 
 extern std::vector<exoModule*> exoModules;
 extern std::vector<exoMotor*> exoMotors;
-std::vector<boost::shared_ptr<exoActuator>> Actuators;
+extern std::vector<exoActuator*> exoActuators;
 
 
 // Базовая структура команд
@@ -49,9 +49,9 @@ struct print_command : command
 					std::cout << "exoModule: " << i << " Name: " << exoModules[i]->GetName() << " FPS: " << exoModules[i]->FPS << " IP: " << exoModules[i]->GetIpAddress().to_string() << " Status: " << exoModules[i]->GetStringConnectStatus() << std::endl;
 				}
 				std::cout << std::endl;
-				for (int i = 0; i < Actuators.size(); i++)
+				for (int i = 0; i < exoActuators.size(); i++)
 				{
-					std::cout << "Actuator: " << i << " Name: " << Actuators[i]->GetName() << std::endl;
+					std::cout << "Actuator: " << i << " Name: " << exoActuators[i]->GetName() << std::endl;
 				}
 				std::cout << std::endl;
 				for (int i = 0; i < exoMotors.size(); i++)
@@ -75,7 +75,7 @@ struct print_command : command
 			{
 				if (args[0] == "Actuator")
 				{
-					std::cout << "Actuator: " << Actuators[Namber]->GetName() << " Position: " << Actuators[Namber]->GetCurrentPosition() << std::endl;
+					std::cout << "Actuator: " << exoActuators[Namber]->GetName() << " Position: " << exoActuators[Namber]->GetCurrentPosition() << std::endl;
 				}
 				else if (args[0] == "exoModule")
 				{
@@ -83,7 +83,7 @@ struct print_command : command
 				}
 				else break;
 
-				boost::this_thread::sleep(boost::posix_time::millisec(200));
+				boost::this_thread::sleep(boost::posix_time::millisec(100));
 			}
 			if (flag == 1) flag = 0;
 

@@ -148,6 +148,10 @@ namespace exo
 				for (int j = 0; j < value_size; j++) read_buffer[j] = buff[index + j];
 				return *(T*)read_buffer;
 			}
+			else
+			{
+				int error = 1;
+			}
 
 			return default_;
 		}

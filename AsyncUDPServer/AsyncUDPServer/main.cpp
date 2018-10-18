@@ -27,37 +27,38 @@ using namespace boost::posix_time;
 
 boost::asio::io_service io_service;
 
-exoModule pModule1(io_service, "192.168.0.102", "Module1");
-exoModule pModule2(io_service, "192.168.0.103", "Module2");
-std::vector<exoModule*> exoModules = { &pModule1 , &pModule2 };
+exoModule pModule_Teensy1(io_service, "192.168.0.103", "Teensy1");
+exoModule pModule_Nucleo(io_service, "192.168.0.100", "Nucleo");
+std::vector<exoModule*> exoModules = { &pModule_Teensy1 , &pModule_Nucleo };
 
 
 
-exoSensor SensorA("A", pModule1);
-exoSensor SensorB("B", pModule1);
-exoSensor SensorC("C", pModule1);
-exoSensor SensorD("D", pModule1);
-exoSensor SensorE("E", pModule1);
-exoSensor SensorF("F", pModule1);
-exoSensor SensorG("G", pModule1);
-exoSensor SensorH("H", pModule1);
-exoSensor SensorI("I", pModule1);
-exoSensor SensorJ("J", pModule1);
-exoSensor SensorCMPS1("CMPS1", pModule1);
-exoSensor SensorCMPS2("CMPS2", pModule1);
+exoSensor SensorA("A", pModule_Teensy1);
+exoSensor SensorB("B", pModule_Teensy1);
+exoSensor SensorC("C", pModule_Teensy1);
+exoSensor SensorD("D", pModule_Teensy1);
+exoSensor SensorE("E", pModule_Teensy1);
+exoSensor SensorF("F", pModule_Teensy1);
+exoSensor SensorG("G", pModule_Teensy1);
+exoSensor SensorH("H", pModule_Teensy1);
+exoSensor SensorI("I", pModule_Teensy1);
+exoSensor SensorJ("J", pModule_Teensy1);
+exoSensor SensorCMPS1("CMPS1", pModule_Teensy1);
+exoSensor SensorCMPS2("CMPS2", pModule_Teensy1);
+
 
 std::vector<exoSensor*> exoSensors = { &SensorA };
 
-exoMotor MotorA("A", pModule1);
-exoMotor MotorB("B", pModule1);
-exoMotor MotorC("C", pModule1);
-exoMotor MotorD("D", pModule1);
-exoMotor MotorE("E", pModule1);
-exoMotor MotorF("F", pModule1);
-exoMotor MotorG("G", pModule1);
-exoMotor MotorH("H", pModule1);
-exoMotor MotorI("I", pModule1);
-exoMotor MotorJ("J", pModule1);
+exoMotor MotorA("A", pModule_Nucleo);
+exoMotor MotorB("B", pModule_Nucleo);
+exoMotor MotorC("C", pModule_Nucleo);
+exoMotor MotorD("D", pModule_Nucleo);
+exoMotor MotorE("E", pModule_Nucleo);
+exoMotor MotorF("F", pModule_Nucleo);
+exoMotor MotorG("G", pModule_Nucleo);
+exoMotor MotorH("H", pModule_Nucleo);
+exoMotor MotorI("I", pModule_Nucleo);
+exoMotor MotorJ("J", pModule_Nucleo);
 
 std::vector<exoMotor*> exoMotors = { &MotorA };
 
@@ -72,7 +73,8 @@ exoActuator ActuatorG("G", MotorG, SensorG);
 exoActuator ActuatorH("H", MotorH, SensorH);
 exoActuator ActuatorI("I", MotorI, SensorI);
 exoActuator ActuatorJ("J", MotorJ, SensorJ);
-std::vector<exoActuator*> exoActuators = { &ActuatorA, &ActuatorB, &ActuatorC, &ActuatorD, &ActuatorE, &ActuatorF, &ActuatorG, &ActuatorH, &ActuatorI, &ActuatorJ };
+
+std::vector<exoActuator*> exoActuators = { &ActuatorA , &ActuatorB, &ActuatorC, &ActuatorD, &ActuatorE, &ActuatorF, &ActuatorG, &ActuatorH, &ActuatorI, &ActuatorJ };
 
 //-----------------------------------------------------------------------------------------------------------------------
 void ThreadTerminal()

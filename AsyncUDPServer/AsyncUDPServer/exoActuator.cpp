@@ -32,7 +32,16 @@ void exoActuator::SetTargetPosition(float angle)
 //----------------------------------------------------------------
 uint16_t exoActuator::GetCurrentPosition()
 {
-	return map(sensor_.GetValue(),1,1,1,10);
+	uint16_t Pr = sensor_.GetValue();
+	if (name_ == "A")
+	{
+		if (((Pr > 500 + 10) || (Pr < 500 - 10)))
+		{
+			int Test = 25;
+		}
+		
+	}
+	return sensor_.GetValue();//map(sensor_.GetValue(),1,1,1,10);
 }
 //---------------------------------------------------------------
 std::string exoActuator::GetName()
