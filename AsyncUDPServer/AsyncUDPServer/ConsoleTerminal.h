@@ -75,7 +75,7 @@ struct print_command : command
 			{
 				if (args[0] == "Actuator")
 				{
-					std::cout << "Actuator: " << Actuators[Namber]->GetName() << " Angle: " << Actuators[Namber]->GetAngle() << std::endl;
+					std::cout << "Actuator: " << Actuators[Namber]->GetName() << " Position: " << Actuators[Namber]->GetCurrentPosition() << std::endl;
 				}
 				else if (args[0] == "exoModule")
 				{

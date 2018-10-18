@@ -11,7 +11,7 @@ public:
 
 	exoSensor(std::string Name, exoModule& module);
 
-	float GetValue();
+	uint16_t GetValue();
 
 	~exoSensor();
 

@@ -1,0 +1,150 @@
+﻿2018-10-11 12:07:35.492 DEBUG [4208] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.674 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.684 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.684 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.684 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.684 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.684 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.684 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.684 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.684 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.684 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.684 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.684 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.684 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.684 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.684 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.684 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.684 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.684 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.684 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.684 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.684 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.684 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.684 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.684 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.684 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.684 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.684 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.684 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.684 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.684 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.684 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.684 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.684 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.684 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.684 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.684 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.684 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:08:43.684 WARN  [4208] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 12:53:50.672 DEBUG [4732] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-11 12:54:45.471 WARN  [4732] [exoUDPServer::handle_receive@51] Could not read UDP message. Error: Удаленный хост принудительно разорвал существующее подключение bytes_recvd: 0
+2018-10-11 13:03:20.599 DEBUG [8876] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-12 14:39:38.092 DEBUG [8296] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-12 14:56:39.702 DEBUG [5812] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-12 15:50:18.450 DEBUG [10072] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-12 15:51:00.520 DEBUG [8232] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-12 16:08:12.514 DEBUG [3580] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-12 16:08:31.159 ERROR [3580] [exoUDPServer::handle_receive@45] Unknown device... IP: 192.168.0.103
+2018-10-12 16:09:19.922 DEBUG [8796] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-12 16:09:34.317 ERROR [8796] [exoUDPServer::handle_receive@45] Unknown device... IP: 192.168.0.100
+2018-10-12 16:11:27.108 DEBUG [8968] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-12 16:11:50.004 ERROR [8968] [exoUDPServer::handle_receive@45] Unknown device... IP: 192.168.0.100
+2018-10-12 16:12:42.926 DEBUG [10088] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-12 16:12:42.927 ERROR [10088] [exoUDPServer::handle_receive@45] Unknown device... IP: 192.168.0.100
+2018-10-12 16:14:21.385 DEBUG [3828] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-12 16:15:15.211 ERROR [3828] [exoUDPServer::handle_receive@45] Unknown device... IP: 192.168.0.100
+2018-10-12 16:15:47.897 DEBUG [9756] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-12 16:27:09.434 DEBUG [8036] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-15 13:49:26.974 DEBUG [7268] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-15 14:23:27.269 DEBUG [7844] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-16 14:35:25.576 DEBUG [6828] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-16 16:03:31.478 DEBUG [9516] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-16 16:38:04.277 DEBUG [8388] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-16 16:54:03.984 DEBUG [10288] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-16 16:54:45.158 DEBUG [9088] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-16 16:57:51.342 DEBUG [8324] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-16 17:01:02.605 DEBUG [10376] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-16 17:05:11.765 DEBUG [8100] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-16 17:11:39.419 DEBUG [9556] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-16 17:16:34.743 DEBUG [9884] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-16 17:36:23.320 DEBUG [7188] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-16 17:52:33.115 DEBUG [8040] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-16 17:53:33.373 DEBUG [7176] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-16 17:54:59.726 DEBUG [7208] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-16 17:56:55.386 DEBUG [8488] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-16 17:59:31.986 DEBUG [6488] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-16 18:01:30.820 DEBUG [9588] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-16 18:28:21.947 DEBUG [4532] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-16 18:30:52.889 DEBUG [7428] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-16 18:41:38.728 DEBUG [2440] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-16 18:43:13.757 DEBUG [3924] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-16 18:44:30.003 DEBUG [10352] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-16 18:46:08.098 DEBUG [6552] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-17 16:33:44.715 DEBUG [7476] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-17 16:52:12.145 DEBUG [8452] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-17 16:59:21.752 DEBUG [8512] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-17 17:11:19.160 DEBUG [8300] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442
+2018-10-17 17:21:44.009 DEBUG [8416] [exoUDPServer::exoUDPServer@8] Starting asynchronous UDP server. Port: 4442

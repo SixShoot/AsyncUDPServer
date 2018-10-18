@@ -32,6 +32,7 @@ void exoUDPServer::handle_receive(const boost::system::error_code& error, size_t
 
 				memcpy(exoModules_[i]->client_pack.buff, recv_pack, bytes_recvd);
 				memcpy(send_pack, exoModules_[i]->server_pack.buff, exoModules_[i]->server_pack.length());
+				send_size = exoModules_[i]->server_pack.length();
 
 				start_send();
 				Ident = true;
@@ -49,7 +50,7 @@ void exoUDPServer::handle_receive(const boost::system::error_code& error, size_t
 	else
 	{
 		LOGW << "Could not read UDP message. Error: " << error.message() << " bytes_recvd: " << bytes_recvd;
-		start_receive();
+		//start_receive();
 	}
 }
 //-------------------------------------------------------------------------------------------

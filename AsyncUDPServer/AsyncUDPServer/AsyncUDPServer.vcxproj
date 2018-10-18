@@ -134,6 +134,7 @@
     <ClInclude Include="exoPackage.hpp" />
     <ClInclude Include="exoSensor.h" />
     <ClInclude Include="exoUDPServer.h" />
+    <ClInclude Include="ServicePatterns.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="exoActuator.cpp" />

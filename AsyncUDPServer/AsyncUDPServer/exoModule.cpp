@@ -48,7 +48,7 @@ int exoModule::GetNumberReceivPack()
 }
 //----------------------------------------------------------------------------------------------
 
-void exoModule::UpdatePack() //std::string& pack
+void exoModule::UpdatePack() 
 {
 	ConnectionStatus = true;
 	NumberReceivPack++;

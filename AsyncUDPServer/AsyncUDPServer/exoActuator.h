@@ -2,26 +2,29 @@
 
 #include <cstdlib>
 #include <iostream>
-//#include "exoModule.h"
+#include "exoMotor.h"
+#include "exoSensor.h"
 
 
 class exoActuator
 {
 public:
 
-	exoActuator(std::string Name);
+	exoActuator(std::string Name, exoMotor& motor, exoSensor& sensor);
 
 	void SetTargetPosition(float angle);
-	void SetDirection(char INA, char INB);
-	float GetAngle();
-	void SetPWM(float pwm);
-	float GetPosition();
+	uint16_t GetCurrentPosition();
 	std::string GetName();
 
 	~exoActuator();
 
 private:
 	std::string name_;
+
+	exoMotor&  motor_;
+	exoSensor& sensor_;
+
+	float Kp;
 	
 	
 };

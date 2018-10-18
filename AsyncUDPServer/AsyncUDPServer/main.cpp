@@ -21,13 +21,15 @@
 #include "ConsoleTerminal.h"
 
 #include "exoPackage.hpp"
+#include "ServicePatterns.hpp"
 
 using namespace boost::posix_time;
 
 boost::asio::io_service io_service;
 
-exoModule pModule1(io_service, "12.0.3.248", "Module1");
-std::vector<exoModule*> exoModules = { &pModule1 };
+exoModule pModule1(io_service, "192.168.0.102", "Module1");
+exoModule pModule2(io_service, "192.168.0.103", "Module2");
+std::vector<exoModule*> exoModules = { &pModule1 , &pModule2 };
 
 
 
@@ -41,6 +43,9 @@ exoSensor SensorG("G", pModule1);
 exoSensor SensorH("H", pModule1);
 exoSensor SensorI("I", pModule1);
 exoSensor SensorJ("J", pModule1);
+exoSensor SensorCMPS1("CMPS1", pModule1);
+exoSensor SensorCMPS2("CMPS2", pModule1);
+
 std::vector<exoSensor*> exoSensors = { &SensorA };
 
 exoMotor MotorA("A", pModule1);
@@ -56,29 +61,20 @@ exoMotor MotorJ("J", pModule1);
 
 std::vector<exoMotor*> exoMotors = { &MotorA };
 
-//-------------------------------------------------------------------------------------------
 
-void print(const boost::system::error_code& /*e*/, boost::asio::deadline_timer* t)
-{
-	t->expires_at(t->expires_at() + boost::posix_time::seconds(1));
-	t->async_wait(boost::bind(print, boost::asio::placeholders::error, t));
+exoActuator ActuatorA("A", MotorA, SensorA);
+exoActuator ActuatorB("B", MotorB, SensorB);
+exoActuator ActuatorC("C", MotorC, SensorC);
+exoActuator ActuatorD("D", MotorD, SensorD);
+exoActuator ActuatorE("E", MotorE, SensorE);
+exoActuator ActuatorF("F", MotorF, SensorF);
+exoActuator ActuatorG("G", MotorG, SensorG);
+exoActuator ActuatorH("H", MotorH, SensorH);
+exoActuator ActuatorI("I", MotorI, SensorI);
+exoActuator ActuatorJ("J", MotorJ, SensorJ);
+std::vector<exoActuator*> exoActuators = { &ActuatorA, &ActuatorB, &ActuatorC, &ActuatorD, &ActuatorE, &ActuatorF, &ActuatorG, &ActuatorH, &ActuatorI, &ActuatorJ };
 
-	/*
-	for (int i = 0; i < exoModules.size(); i++)
-	{
-		std::cout << "Module: " << i << " FPS: " << exoModules[i]->FPS << " SensorA: " << ActuatorA.GetAngle() << std::endl;
-	}
-	*/
-	
-	
-	//std::cout << "Nucleo1  FPS: " << Nucleo_1.FPS << " SensorA: " << ActuatorA.GetAngle() << std::endl;
-
-	//std::cout << "PC  FPS: " << PCModule.FPS << std::endl;
-
-
-}
-//-------------------------------------------------------------------------------------------
-
+//-----------------------------------------------------------------------------------------------------------------------
 void ThreadTerminal()
 {
 	setlocale(LC_ALL, "Russian");
@@ -108,6 +104,7 @@ void ThreadTerminal()
 	}
 }
 //-------------------------------------------------------------------------------------------
+uint32_t GlobalTime = 0;
 void MainExo(const boost::system::error_code& /*e*/, boost::asio::deadline_timer* t)
 {
 	t->expires_at(t->expires_at() + boost::posix_time::millisec(2));
@@ -115,7 +112,17 @@ void MainExo(const boost::system::error_code& /*e*/, boost::asio::deadline_timer
 
 	// 500 Ãö.
 	//********************MAIN****************************
+	GlobalTime += 2;
+	pattern::GetCurrentAngles_Patterns(GlobalTime / 100.0);
+	for (int i = 0; i < exoActuators.size(); i++)
+	{
+		//exoActuators[i]->SetTargetPosition(45.0);
+		exoActuators[i]->SetTargetPosition(pattern::Angle[i]);
 		
+	}
+
+	if (GlobalTime > 400) GlobalTime = 0;
+
 		//LOGD << "Hello log!";
 
 	//********************!MAIN!****************************
@@ -123,31 +130,9 @@ void MainExo(const boost::system::error_code& /*e*/, boost::asio::deadline_timer
 //----------------------------------------------------------------------------------------
 int main(int argc, char* argv[])
 {
-	exo::exoPackage Pack;
 
+	pattern::OpenPatterns("E:\\Antipov\\Walk_1720_Theta4Active\\Pattern_Step1.txt");
 	
-	int fgdfg = 234;
-	Pack.set<int>("Vovik", fgdfg);
-
-	uint16_t v2 = 3423;
-	Pack.set<uint16_t>("Vok", v2);
-
-
-	fgdfg = 9876;
-	Pack.set<int>("Vovik", fgdfg);
-	
-	fgdfg = 123;
-	Pack.set<int>("LOL", fgdfg);
-
-	//-----------------
-
-	int dd = Pack.get<int>("Vovik", 0);
-
-	int dd2 = Pack.get<int>("LOL", 0);
-
-	int dfgdg = 435;
-	
-	/*
 	// Initialize the logger that will be measured.
 	plog::init(plog::debug, "logs\\log.txt", 1000000, 10); 
 
@@ -165,10 +150,6 @@ int main(int argc, char* argv[])
 		boost::asio::deadline_timer exo_time(io_service, boost::posix_time::millisec(2));
 		exo_time.async_wait(boost::bind(MainExo, boost::asio::placeholders::error, &exo_time));
 
-		//boost::asio::deadline_timer t(io_service, boost::posix_time::seconds(1));
-		//t.async_wait(boost::bind(print, boost::asio::placeholders::error, &t));
-
-
 		io_service.run();
 	}
 	catch (std::exception& e)
@@ -178,7 +159,6 @@ int main(int argc, char* argv[])
 	}
 
 	//thr.join();
-	*/
 
 	return 0;
 }

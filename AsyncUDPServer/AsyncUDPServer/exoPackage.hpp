@@ -7,6 +7,7 @@
 namespace exo
 {
 
+	
 	class exoPackage
 	{
 	public:
@@ -22,6 +23,32 @@ namespace exo
 		uint16_t length()
 		{
 			return set_item_index;
+		}
+		//-----------------------------------------------------------------------------------
+		template < typename T >
+		uint8_t init(const char *str)
+		{
+			buff[0] = buff[0] + 1;
+			uint8_t header_size = strlen(str);
+			buff[set_item_index] = header_size;
+			for (int i = 0; i < header_size; i++) buff[set_item_index + i + 1] = str[i];
+
+			uint8_t value_size = sizeof(T);
+			buff[set_item_index + header_size + 1] = value_size;
+
+			uint8_t value_index = set_item_index + header_size + 2;
+
+			for (int i = 0; i < value_size; i++) buff[value_index + i] = 0;
+
+			set_item_index += header_size + value_size + 2;			
+			return value_index;
+		}
+		//-----------------------------------------------------------------------------------
+		template < typename T >
+		void set2(uint8_t handle, T value)
+		{
+			uint8_t value_size = sizeof(T);
+			for (int i = 0; i < value_size; i++) buff[handle + i] = ((uint8_t*)&value)[i];
 		}
 		//-----------------------------------------------------------------------------------
 		template < typename T >
@@ -46,7 +73,7 @@ namespace exo
 
 			set_item_index += header_size + value_size + 2;
 		}
-
+		
 		//-----------------------------------------------------------------------------------
 		uint16_t GetIndexData(const char *str)
 		{
