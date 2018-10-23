@@ -1,3 +1,5 @@
+#define _WIN32_WINNT 0x0501
+
 #include "exoMotor.h"
 
 exoMotor::exoMotor(std::string Name, exoModule& module) : module_(module)

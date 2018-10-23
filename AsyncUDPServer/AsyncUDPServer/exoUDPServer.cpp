@@ -30,7 +30,12 @@ void exoUDPServer::handle_receive(const boost::system::error_code& error, size_t
 			{
 				exoModules_[i]->UpdatePack();
 
+				boost::recursive_mutex::scoped_lock lk(exoModules_[i]->client_pack.cs);
+				boost::recursive_mutex::scoped_lock lk2(exoModules_[i]->server_pack.cs);
+
 				memcpy(exoModules_[i]->client_pack.buff, recv_pack, bytes_recvd);
+				exoModules_[i]->client_pack.SetLength(bytes_recvd);
+
 				memcpy(send_pack, exoModules_[i]->server_pack.buff, exoModules_[i]->server_pack.length());
 				send_size = exoModules_[i]->server_pack.length();
 

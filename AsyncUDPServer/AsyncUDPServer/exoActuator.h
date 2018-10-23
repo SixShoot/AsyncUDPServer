@@ -24,6 +24,8 @@ private:
 	exoMotor&  motor_;
 	exoSensor& sensor_;
 
+
+
 	float Kp;
 	
 	

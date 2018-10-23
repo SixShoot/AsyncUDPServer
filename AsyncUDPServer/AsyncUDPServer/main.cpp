@@ -27,7 +27,7 @@ using namespace boost::posix_time;
 
 boost::asio::io_service io_service;
 
-exoModule pModule_Teensy1(io_service, "192.168.0.103", "Teensy1");
+exoModule pModule_Teensy1(io_service, "192.168.0.101", "Teensy1");
 exoModule pModule_Nucleo(io_service, "192.168.0.100", "Nucleo");
 std::vector<exoModule*> exoModules = { &pModule_Teensy1 , &pModule_Nucleo };
 
@@ -109,7 +109,7 @@ void ThreadTerminal()
 uint32_t GlobalTime = 0;
 void MainExo(const boost::system::error_code& /*e*/, boost::asio::deadline_timer* t)
 {
-	t->expires_at(t->expires_at() + boost::posix_time::millisec(2));
+	t->expires_at(t->expires_at() + boost::posix_time::millisec(5));
 	t->async_wait(boost::bind(MainExo, boost::asio::placeholders::error, t));
 
 	// 500 Ãö.
@@ -123,7 +123,7 @@ void MainExo(const boost::system::error_code& /*e*/, boost::asio::deadline_timer
 		
 	}
 
-	if (GlobalTime > 400) GlobalTime = 0;
+	if (GlobalTime > 400) GlobalTime = 0; //dffdf
 
 		//LOGD << "Hello log!";
 
@@ -149,7 +149,7 @@ int main(int argc, char* argv[])
 	{
 		exoUDPServer server(io_service, exoModules, 4442);
 
-		boost::asio::deadline_timer exo_time(io_service, boost::posix_time::millisec(2));
+		boost::asio::deadline_timer exo_time(io_service, boost::posix_time::millisec(5));
 		exo_time.async_wait(boost::bind(MainExo, boost::asio::placeholders::error, &exo_time));
 
 		io_service.run();

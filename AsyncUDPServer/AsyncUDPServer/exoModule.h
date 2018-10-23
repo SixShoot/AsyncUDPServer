@@ -32,11 +32,12 @@ public:
 	void Check_TimeOut();
 
 	void UpdatePack();
+	int GetFPS();
 
 	
 	void ModuleService();
 
-	int FPS;
+	
 
 private:
 	boost::asio::ip::address ip;
@@ -44,6 +45,8 @@ private:
 
 	boost::asio::deadline_timer Timer1;
 	boost::asio::deadline_timer Timer_TimeOut;	
+
+	int FPS;
 
 	int NumberReceivPack;
 

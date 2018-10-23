@@ -16,6 +16,10 @@ extern std::vector<exoModule*> exoModules;
 extern std::vector<exoMotor*> exoMotors;
 extern std::vector<exoActuator*> exoActuators;
 
+// thread-safe 
+boost::recursive_mutex cs;
+
+
 
 // Базовая структура команд
 struct command
@@ -42,11 +46,11 @@ struct print_command : command
 		}
 		else if (args.size() == 1)
 		{
-			if (args[0] == "module")
+			if (args[0] == "-m")
 			{
 				for (int i = 0; i < exoModules.size(); i++)
 				{
-					std::cout << "exoModule: " << i << " Name: " << exoModules[i]->GetName() << " FPS: " << exoModules[i]->FPS << " IP: " << exoModules[i]->GetIpAddress().to_string() << " Status: " << exoModules[i]->GetStringConnectStatus() << std::endl;
+					std::cout << "exoModule: " << i << " Name: " << exoModules[i]->GetName() << " FPS: " << exoModules[i]->GetFPS() << " IP: " << exoModules[i]->GetIpAddress().to_string() << " Status: " << exoModules[i]->GetStringConnectStatus() << std::endl;
 				}
 				std::cout << std::endl;
 				for (int i = 0; i < exoActuators.size(); i++)
@@ -73,13 +77,14 @@ struct print_command : command
 
 			while (flag == 0)
 			{
-				if (args[0] == "Actuator")
+				if (args[0] == "-a")
 				{
+					boost::recursive_mutex::scoped_lock lk(cs);
 					std::cout << "Actuator: " << exoActuators[Namber]->GetName() << " Position: " << exoActuators[Namber]->GetCurrentPosition() << std::endl;
 				}
-				else if (args[0] == "exoModule")
+				else if (args[0] == "-m")
 				{
-					std::cout << "exoModule: " << exoModules[Namber]->GetName() << " FPS: " << exoModules[Namber]->FPS << " Status: " << exoModules[Namber]->GetStringConnectStatus() << std::endl;
+					std::cout << exoModules[Namber]->GetName() << " FPS: " << exoModules[Namber]->GetFPS() << " Size: " << exoModules[Namber]->client_pack.length() << " bytes" << " Status: " << exoModules[Namber]->GetStringConnectStatus() << std::endl;
 				}
 				else break;
 
@@ -124,8 +129,8 @@ struct help_command : command
 		{
 			if (args[0] == "print")
 			{
-				std::cout << "Печать отладочной информации. \nНапример: \n\nprint module - печатать все доступные модули \nprint Actuator 0 - Печатать параметры привода \"A\"" << std::endl;
-				std::cout << "print exoModule 0" << std::endl;
+				std::cout << "Печать отладочной информации. \nНапример: \n\nprint -m - печатать все доступные модули \nprint -a 0 - Печатать параметры привода \"A\"" << std::endl;
+				std::cout << "print -m 0" << std::endl;
 			}
 		}
 		else

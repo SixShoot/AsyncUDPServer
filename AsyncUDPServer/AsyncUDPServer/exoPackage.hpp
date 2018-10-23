@@ -11,7 +11,9 @@ namespace exo
 	class exoPackage
 	{
 	public:
-		
+
+		// thread-safe
+		boost::recursive_mutex cs;		
 
 		exoPackage()
 		{
@@ -20,8 +22,15 @@ namespace exo
 			get_item_index = 1;
 		}
 		//-----------------------------------------------------------------------------------
+		void SetLength(uint16_t ln)
+		{
+			boost::recursive_mutex::scoped_lock lk(cs);
+			set_item_index = ln;
+		}
+		//-----------------------------------------------------------------------------------
 		uint16_t length()
 		{
+			boost::recursive_mutex::scoped_lock lk(cs);
 			return set_item_index;
 		}
 		//-----------------------------------------------------------------------------------
@@ -47,6 +56,7 @@ namespace exo
 		template < typename T >
 		void set2(uint8_t handle, T value)
 		{
+			boost::recursive_mutex::scoped_lock lk(cs);
 			uint8_t value_size = sizeof(T);
 			for (int i = 0; i < value_size; i++) buff[handle + i] = ((uint8_t*)&value)[i];
 		}
@@ -54,6 +64,7 @@ namespace exo
 		template < typename T >
 		void set(const char *str, T& value)
 		{
+			boost::recursive_mutex::scoped_lock lk(cs);
 			uint16_t index = GetIndexData(str);
 			if (index != 0)
 			{
@@ -110,36 +121,8 @@ namespace exo
 		template < typename T >
 		T get(const char *str, T default_)
 		{
-			/*
-			// Чтение 
-			for (int i = 0; i < buff[0]; i++)
-			{
-				uint8_t header_size = buff[get_item_index];
+			boost::recursive_mutex::scoped_lock lk(cs);
 
-				char *header = new char[header_size + 1];
-
-				for (int h = 0; h < header_size; h++) header[h] = buff[get_item_index + h + 1];
-				header[header_size] = '\0';
-
-				uint8_t value_size = buff[get_item_index + header_size + 1];
-
-				if (strcmp(str, header) == 0)
-				{
-					delete header;
-					uint8_t read_buffer[8];
-					for (int j = 0; j < value_size; j++) read_buffer[j] = buff[get_item_index + header_size + 2 + j];
-					get_item_index = 1;
-					return *(T*)read_buffer;
-				}
-				else
-				{
-					delete header;
-					get_item_index += header_size + value_size + 2;
-				}
-			}
-			get_item_index = 1;
-			return default_;
-			*/
 			uint16_t index = GetIndexData(str);
 			if (index != 0)
 			{

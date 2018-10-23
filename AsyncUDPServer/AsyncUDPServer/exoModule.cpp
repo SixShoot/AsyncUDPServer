@@ -1,3 +1,5 @@
+#define _WIN32_WINNT 0x0501
+
 #include "exoModule.h"
 
 #include <ctime>
@@ -22,6 +24,11 @@ void exoModule::Timer1_Hendle(const boost::system::error_code& /*e*/, boost::asi
 	FPS = NumberReceivPack;
 	NumberReceivPack = 0;
 
+}
+//---------------------------------------------------------------------------------------------
+int exoModule::GetFPS()
+{
+	return FPS;
 }
 //---------------------------------------------------------------------------------------------
 void exoModule::Check_TimeOut()
