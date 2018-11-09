@@ -22,12 +22,16 @@
 
 #include "exoPackage.hpp"
 #include "ServicePatterns.hpp"
+#include "exoSystem.h"
 
 using namespace boost::posix_time;
 
+
+exoSystem System;
+
 boost::asio::io_service io_service;
 
-exoModule pModule_Teensy1(io_service, "192.168.0.101", "Teensy1");
+exoModule pModule_Teensy1(io_service, "192.168.0.106", "Teensy1");
 exoModule pModule_Nucleo(io_service, "192.168.0.100", "Nucleo");
 std::vector<exoModule*> exoModules = { &pModule_Teensy1 , &pModule_Nucleo };
 
@@ -107,11 +111,40 @@ void ThreadTerminal()
 }
 //-------------------------------------------------------------------------------------------
 uint32_t GlobalTime = 0;
+ptime last_time;
 void MainExo(const boost::system::error_code& /*e*/, boost::asio::deadline_timer* t)
 {
+	//if (t->expires_at() <= boost::asio::deadline_timer::traits_type::now())
+	//{
+		
+	//}
+	/*
+	for (int i = 0; i < 2999999999; i++)
+	{
+		int ff = 234;
+	}
+
+
+	long d  = (boost::asio::deadline_timer::traits_type::now() - t->expires_at()).total_milliseconds();
+	long d2 = (microsec_clock::local_time() - t->expires_at()).total_milliseconds();
+	
 	t->expires_at(t->expires_at() + boost::posix_time::millisec(5));
 	t->async_wait(boost::bind(MainExo, boost::asio::placeholders::error, t));
 
+	
+
+
+
+	ptime now = microsec_clock::local_time();
+	long ms = (now - last_time).total_milliseconds();
+	last_time = now;
+	*/
+
+
+
+
+	
+	//LOGD << "Hello log!" << ms << " D: " << d << " D2: " << d2;
 	// 500 Гц.
 	//********************MAIN****************************
 	GlobalTime += 2;
@@ -130,6 +163,28 @@ void MainExo(const boost::system::error_code& /*e*/, boost::asio::deadline_timer
 	//********************!MAIN!****************************
 }
 //----------------------------------------------------------------------------------------
+void ThreadExoControl()
+{
+	exoSystem System;
+
+	boost::asio::io_service io;
+
+	while (1)
+	{
+
+		//LOGD << "Test1";
+
+		//boost::asio::deadline_timer t(io, boost::posix_time::millisec(1));
+		//t.wait();
+
+
+
+		boost::this_thread::sleep(boost::posix_time::millisec(1)); 
+	}
+
+	System.ControlFlow();
+}
+//----------------------------------------------------------------------------------------
 int main(int argc, char* argv[])
 {
 
@@ -145,10 +200,14 @@ int main(int argc, char* argv[])
 			boost::thread TT(ThreadTerminal);
 	}
 		
+	// Создание главного потака управления и решателя
+	boost::thread SystemThread(ThreadExoControl);
+		
 	try
 	{
 		exoUDPServer server(io_service, exoModules, 4442);
 
+		last_time = microsec_clock::local_time();
 		boost::asio::deadline_timer exo_time(io_service, boost::posix_time::millisec(5));
 		exo_time.async_wait(boost::bind(MainExo, boost::asio::placeholders::error, &exo_time));
 

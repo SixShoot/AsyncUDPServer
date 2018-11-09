@@ -16,9 +16,6 @@ extern std::vector<exoModule*> exoModules;
 extern std::vector<exoMotor*> exoMotors;
 extern std::vector<exoActuator*> exoActuators;
 
-// thread-safe 
-boost::recursive_mutex cs;
-
 
 
 // Базовая структура команд
@@ -79,7 +76,6 @@ struct print_command : command
 			{
 				if (args[0] == "-a")
 				{
-					boost::recursive_mutex::scoped_lock lk(cs);
 					std::cout << "Actuator: " << exoActuators[Namber]->GetName() << " Position: " << exoActuators[Namber]->GetCurrentPosition() << std::endl;
 				}
 				else if (args[0] == "-m")

@@ -133,6 +133,7 @@
     <ClInclude Include="exoMotor.h" />
     <ClInclude Include="exoPackage.hpp" />
     <ClInclude Include="exoSensor.h" />
+    <ClInclude Include="exoSystem.h" />
     <ClInclude Include="exoUDPServer.h" />
     <ClInclude Include="ServicePatterns.hpp" />
   </ItemGroup>
@@ -141,6 +142,7 @@
     <ClCompile Include="exoModule.cpp" />
     <ClCompile Include="exoMotor.cpp" />
     <ClCompile Include="exoSensor.cpp" />
+    <ClCompile Include="exoSystem.cpp" />
     <ClCompile Include="exoUDPServer.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
