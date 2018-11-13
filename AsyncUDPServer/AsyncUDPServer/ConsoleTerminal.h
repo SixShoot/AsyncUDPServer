@@ -14,10 +14,8 @@
 volatile sig_atomic_t flag = 0;
 
 extern std::vector<exoModule*> exoModules;
-extern std::vector<exoMotor*> exoMotors;
-extern std::vector<exoActuator*> exoActuators;
 
-
+//extern exoSystem exo_system(exoModules);
 
 // Базовая структура команд
 struct command
@@ -51,14 +49,14 @@ struct print_command : command
 					std::cout << "exoModule: " << i << " Name: " << exoModules[i]->GetName() << " FPS: " << exoModules[i]->GetFPS() << " IP: " << exoModules[i]->GetIpAddress().to_string() << " Status: " << exoModules[i]->GetStringConnectStatus() << std::endl;
 				}
 				std::cout << std::endl;
-				for (int i = 0; i < exoActuators.size(); i++)
+				for (int i = 0; i < ActuatorSize; i++)
 				{
-					std::cout << "Actuator: " << i << " Name: " << exoActuators[i]->GetName() << std::endl;
+					//std::cout << "Actuator: " << i << " Name: " << exo_system.Actuator[i].GetName() << std::endl;
 				}
 				std::cout << std::endl;
-				for (int i = 0; i < exoMotors.size(); i++)
+				for (int i = 0; i < ActuatorSize; i++)
 				{
-					std::cout << "Motor: " << i << " Name: " << exoMotors[i]->GetName() << std::endl;
+					std::cout << "Motor: " << i << " Name: " << "fgf" /*exoMotors[i]->GetName() */ << std::endl;
 				}
 
 			}
@@ -77,7 +75,7 @@ struct print_command : command
 			{
 				if (args[0] == "-a")
 				{
-					std::cout << "Actuator: " << exoActuators[Namber]->GetName() << " Position: " << exoActuators[Namber]->GetCurrentPosition() << std::endl;
+					//std::cout << "Actuator: " << exo_system.Actuator[Namber].GetName() << " Position: " << exo_system.Actuator[Namber].GetCurrentPosition() << std::endl;
 				}
 				else if (args[0] == "-m")
 				{

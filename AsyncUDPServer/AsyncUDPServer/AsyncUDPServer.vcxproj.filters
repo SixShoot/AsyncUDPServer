@@ -18,19 +18,10 @@
     <ClInclude Include="ConsoleTerminal.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="exoActuator.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="exoModule.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="exoMotor.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="exoPackage.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="exoSensor.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="exoUDPServer.h">
@@ -42,18 +33,18 @@
     <ClInclude Include="exoSystem.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="exoMotor.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="exoActuator.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="exoSensor.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="exoActuator.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="exoModule.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="exoMotor.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="exoSensor.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="exoUDPServer.cpp">

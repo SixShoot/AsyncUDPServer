@@ -128,20 +128,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleTerminal.h" />
-    <ClInclude Include="exoActuator.h" />
+    <ClInclude Include="exoActuator.hpp" />
     <ClInclude Include="exoModule.h" />
-    <ClInclude Include="exoMotor.h" />
+    <ClInclude Include="exoMotor.hpp" />
     <ClInclude Include="exoPackage.hpp" />
-    <ClInclude Include="exoSensor.h" />
+    <ClInclude Include="exoSensor.hpp" />
     <ClInclude Include="exoSystem.h" />
     <ClInclude Include="exoUDPServer.h" />
     <ClInclude Include="ServicePatterns.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="exoActuator.cpp" />
     <ClCompile Include="exoModule.cpp" />
-    <ClCompile Include="exoMotor.cpp" />
-    <ClCompile Include="exoSensor.cpp" />
     <ClCompile Include="exoSystem.cpp" />
     <ClCompile Include="exoUDPServer.cpp" />
     <ClCompile Include="main.cpp" />
