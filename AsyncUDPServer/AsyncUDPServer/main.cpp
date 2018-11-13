@@ -14,27 +14,28 @@
 #include <vector>
 #include <clocale> //Обязательно для функции setlocale()
 
+
+#include "exoSystem.h"
 #include "exoUDPServer.h"
-#include "exoActuator.h"
-#include "exoSensor.h"
-#include "exoMotor.h"
+//#include "exoActuator.h"
+//#include "exoSensor.h"
+//#include "exoMotor.h"
 #include "ConsoleTerminal.h"
 
 #include "exoPackage.hpp"
 #include "ServicePatterns.hpp"
-#include "exoSystem.h"
+
 
 using namespace boost::posix_time;
 
 
-exoSystem System;
-
 boost::asio::io_service io_service;
 
-exoModule pModule_Teensy1(io_service, "192.168.0.106", "Teensy1");
-exoModule pModule_Nucleo(io_service, "192.168.0.100", "Nucleo");
-std::vector<exoModule*> exoModules = { &pModule_Teensy1 , &pModule_Nucleo };
 
+
+exoModule pModule_Teensy1(io_service, "192.168.0.106", "Teensy1");
+exoModule pModule_Nucleo(io_service, "192.168.0.102", "Nucleo");
+std::vector<exoModule*> exoModules = { &pModule_Teensy1 , &pModule_Nucleo };
 
 
 exoSensor SensorA("A", pModule_Teensy1);
@@ -79,6 +80,8 @@ exoActuator ActuatorI("I", MotorI, SensorI);
 exoActuator ActuatorJ("J", MotorJ, SensorJ);
 
 std::vector<exoActuator*> exoActuators = { &ActuatorA , &ActuatorB, &ActuatorC, &ActuatorD, &ActuatorE, &ActuatorF, &ActuatorG, &ActuatorH, &ActuatorI, &ActuatorJ };
+
+
 
 //-----------------------------------------------------------------------------------------------------------------------
 void ThreadTerminal()
@@ -126,8 +129,9 @@ void MainExo(const boost::system::error_code& /*e*/, boost::asio::deadline_timer
 
 
 	long d  = (boost::asio::deadline_timer::traits_type::now() - t->expires_at()).total_milliseconds();
-	long d2 = (microsec_clock::local_time() - t->expires_at()).total_milliseconds();
-	
+	*/
+	//long d2 = (microsec_clock::local_time() - t->expires_at()).total_milliseconds();
+	/*
 	t->expires_at(t->expires_at() + boost::posix_time::millisec(5));
 	t->async_wait(boost::bind(MainExo, boost::asio::placeholders::error, t));
 
@@ -147,6 +151,7 @@ void MainExo(const boost::system::error_code& /*e*/, boost::asio::deadline_timer
 	//LOGD << "Hello log!" << ms << " D: " << d << " D2: " << d2;
 	// 500 Гц.
 	//********************MAIN****************************
+	/*
 	GlobalTime += 2;
 	pattern::GetCurrentAngles_Patterns(GlobalTime / 100.0);
 	for (int i = 0; i < exoActuators.size(); i++)
@@ -158,31 +163,79 @@ void MainExo(const boost::system::error_code& /*e*/, boost::asio::deadline_timer
 
 	if (GlobalTime > 400) GlobalTime = 0; //dffdf
 
+	*/
+
 		//LOGD << "Hello log!";
 
 	//********************!MAIN!****************************
 }
 //----------------------------------------------------------------------------------------
+uint8_t PowerOn_Handle = pModule_Nucleo.server_pack.init<uint8_t>("ULN");
+
+int ULN = 0;
+
+
+void Test1(const boost::system::error_code& /*e*/, boost::asio::deadline_timer* t)
+{
+	
+	/*
+	if (ULN == 0)
+	{
+		pModule_Nucleo.server_pack.set2<uint8_t>(PowerOn_Handle, 1);
+		ULN = 1;
+		LOGD << "ULN: " << ULN;
+
+		MotorA.SetPWM(30);
+		MotorA.SetDirection(1,0);
+
+	}
+	else
+	{
+		MotorA.SetPWM(30);
+		MotorA.SetDirection(0, 1);
+
+		pModule_Nucleo.server_pack.set2<uint8_t>(PowerOn_Handle, 0);
+		ULN = 0;
+		LOGD << "ULN: " << ULN;
+
+	}	
+	*/
+	
+	t->expires_from_now(t->expires_from_now() + boost::posix_time::seconds(2));
+	t->async_wait(boost::bind(Test1, boost::asio::placeholders::error, t));
+}
+
+
 void ThreadExoControl()
 {
 	exoSystem System;
 
+	/*
 	boost::asio::io_service io;
+
+	boost::asio::deadline_timer exo_time(io, boost::posix_time::seconds(10));
+	exo_time.async_wait(boost::bind(Test1, boost::asio::placeholders::error, &exo_time));
+
+
+	io.run();
+	*/
+
+	boost::posix_time::ptime mst1 = boost::posix_time::microsec_clock::local_time();
+	boost::posix_time::ptime mst2 = mst1;
+
+	boost::posix_time::time_duration msdiff;
 
 	while (1)
 	{
-
-		//LOGD << "Test1";
-
-		//boost::asio::deadline_timer t(io, boost::posix_time::millisec(1));
-		//t.wait();
-
-
+		
+		msdiff = mst2 - mst1;
+		System.ControlFlow(msdiff.total_milliseconds());
+		mst2 = boost::posix_time::microsec_clock::local_time();
+		
 
 		boost::this_thread::sleep(boost::posix_time::millisec(1)); 
 	}
-
-	System.ControlFlow();
+		
 }
 //----------------------------------------------------------------------------------------
 int main(int argc, char* argv[])

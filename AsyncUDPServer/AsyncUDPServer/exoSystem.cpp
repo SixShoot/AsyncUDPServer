@@ -4,16 +4,37 @@
 #include "exoSystem.h"
 
 
-exoSystem::exoSystem()
-{
 
+
+exoSystem::exoSystem() 
+{
+	
 }
 
 
 
-void exoSystem::ControlFlow()
+void exoSystem::ControlFlow(int64_t t)
 {
+	
+	
+	//LOGD << "Time: " << t;
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*
+	// Устанавливаем целевые углы
+	for (int i = 0; i < exoActuators.size(); i++) 
+	{
+		exoActuators[i]->SetTargetPosition(0);
+	}
+	*/
 }
 
 

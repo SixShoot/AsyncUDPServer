@@ -37,6 +37,8 @@ namespace exo
 		template < typename T >
 		uint8_t init(const char *str)
 		{
+			boost::recursive_mutex::scoped_lock lk(cs);
+
 			buff[0] = buff[0] + 1;
 			uint8_t header_size = strlen(str);
 			buff[set_item_index] = header_size;

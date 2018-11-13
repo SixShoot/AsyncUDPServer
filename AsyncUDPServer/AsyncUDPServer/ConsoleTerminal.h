@@ -9,6 +9,7 @@
 //#include <iterator>
 //#include <Windows.h>
 #include <signal.h> //  our new library
+#include "exoSystem.h"
 
 volatile sig_atomic_t flag = 0;
 
