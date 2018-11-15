@@ -1,8 +1,13 @@
 #pragma once
 
+
+#define USE_BOOST
+
 #define SIZE_BUFF 1024
 
 #include <cstdlib>
+
+
 
 namespace exo
 {
@@ -12,8 +17,9 @@ namespace exo
 	{
 	public:
 
-		// thread-safe
-		boost::recursive_mutex cs;		
+		#ifdef USE_BOOST
+				boost::recursive_mutex cs;
+		#endif
 
 		exoPackage()
 		{
@@ -24,20 +30,28 @@ namespace exo
 		//-----------------------------------------------------------------------------------
 		void SetLength(uint16_t ln)
 		{
-			boost::recursive_mutex::scoped_lock lk(cs);
+			#ifdef USE_BOOST
+						boost::recursive_mutex::scoped_lock lk(cs);
+			#endif
+
 			set_item_index = ln;
 		}
 		//-----------------------------------------------------------------------------------
 		uint16_t length()
 		{
-			boost::recursive_mutex::scoped_lock lk(cs);
+			#ifdef USE_BOOST
+						boost::recursive_mutex::scoped_lock lk(cs);
+			#endif
+
 			return set_item_index;
 		}
 		//-----------------------------------------------------------------------------------
 		template < typename T >
 		uint8_t init(const char *str)
 		{
-			boost::recursive_mutex::scoped_lock lk(cs);
+			#ifdef USE_BOOST
+				boost::recursive_mutex::scoped_lock lk(cs);
+			#endif
 
 			buff[0] = buff[0] + 1;
 			uint8_t header_size = strlen(str);
@@ -56,9 +70,12 @@ namespace exo
 		}
 		//-----------------------------------------------------------------------------------
 		template < typename T >
-		void set2(uint8_t handle, T value)
+		void set(uint8_t handle, T value)
 		{
-			boost::recursive_mutex::scoped_lock lk(cs);
+			#ifdef USE_BOOST
+						boost::recursive_mutex::scoped_lock lk(cs);
+			#endif
+
 			uint8_t value_size = sizeof(T);
 			for (int i = 0; i < value_size; i++) buff[handle + i] = ((uint8_t*)&value)[i];
 		}
@@ -66,7 +83,10 @@ namespace exo
 		template < typename T >
 		void set(const char *str, T& value)
 		{
-			boost::recursive_mutex::scoped_lock lk(cs);
+			#ifdef USE_BOOST
+						boost::recursive_mutex::scoped_lock lk(cs);
+			#endif
+
 			uint16_t index = GetIndexData(str);
 			if (index != 0)
 			{
@@ -90,27 +110,21 @@ namespace exo
 		//-----------------------------------------------------------------------------------
 		uint16_t GetIndexData(const char *str)
 		{
+			uint8_t find_header_size = strlen(str);
+			
 			// Чтение 
 			for (int i = 0; i < buff[0]; i++)
 			{
 				uint8_t header_size = buff[get_item_index];
-
-
-				//--------------
-				uint8_t find_header_size = strlen(str);
+				uint8_t value_size = buff[get_item_index + header_size + 1];
 
 				if (header_size == find_header_size)
 				{
-					uint8_t value_size = buff[get_item_index + header_size + 1];
-					
 					// Сравниваем
 					bool is = false;
 					for (int h = 0; h < header_size; h++)
 					{
-						if (buff[get_item_index + h + 1] == str[h])
-						{
-							is = true;
-						}
+						if (buff[get_item_index + h + 1] == str[h]) is = true;
 						else 
 						{	
 							is = false;
@@ -124,35 +138,9 @@ namespace exo
 						get_item_index = 1;
 						return ind;
 					}
-					else
-					{
-						get_item_index += header_size + value_size + 2;
-					}
-
 				}
-				//--------------
-				
-				/*
-				char *header = new char[header_size + 1];
 
-				for (int h = 0; h < header_size; h++) header[h] = buff[get_item_index + h + 1];
-				header[header_size] = '\0';
-
-				uint8_t value_size = buff[get_item_index + header_size + 1];
-
-				if (strcmp(str, header) == 0)
-				{
-					delete header;
-					uint16_t ind = get_item_index + header_size + 2;
-					get_item_index = 1;
-					return ind;
-				}
-				else
-				{
-					delete header;
-					get_item_index += header_size + value_size + 2;
-				}
-				*/
+				get_item_index += header_size + value_size + 2;
 			}
 			get_item_index = 1;
 			return 0;
@@ -162,7 +150,9 @@ namespace exo
 		template < typename T >
 		T get(const char *str, T default_)
 		{
-			boost::recursive_mutex::scoped_lock lk(cs);
+			#ifdef USE_BOOST
+						boost::recursive_mutex::scoped_lock lk(cs);
+			#endif
 
 			uint16_t index = GetIndexData(str);
 			if (index != 0)
@@ -171,10 +161,6 @@ namespace exo
 				uint8_t read_buffer[8];
 				for (int j = 0; j < value_size; j++) read_buffer[j] = buff[index + j];
 				return *(T*)read_buffer;
-			}
-			else
-			{
-				int error = 1;
 			}
 
 			return default_;
