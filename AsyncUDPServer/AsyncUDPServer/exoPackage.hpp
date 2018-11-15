@@ -95,6 +95,44 @@ namespace exo
 			{
 				uint8_t header_size = buff[get_item_index];
 
+
+				//--------------
+				uint8_t find_header_size = strlen(str);
+
+				if (header_size == find_header_size)
+				{
+					uint8_t value_size = buff[get_item_index + header_size + 1];
+					
+					// Сравниваем
+					bool is = false;
+					for (int h = 0; h < header_size; h++)
+					{
+						if (buff[get_item_index + h + 1] == str[h])
+						{
+							is = true;
+						}
+						else 
+						{	
+							is = false;
+							break;
+						}
+					}
+
+					if (is)
+					{
+						uint16_t ind = get_item_index + header_size + 2;
+						get_item_index = 1;
+						return ind;
+					}
+					else
+					{
+						get_item_index += header_size + value_size + 2;
+					}
+
+				}
+				//--------------
+				
+				/*
 				char *header = new char[header_size + 1];
 
 				for (int h = 0; h < header_size; h++) header[h] = buff[get_item_index + h + 1];
@@ -114,6 +152,7 @@ namespace exo
 					delete header;
 					get_item_index += header_size + value_size + 2;
 				}
+				*/
 			}
 			get_item_index = 1;
 			return 0;

@@ -28,6 +28,7 @@ public:
 	int GetNumberReceivPack();
 	std::string GetName();
 	std::string GetStringConnectStatus();
+	bool GetConnectStatus();
 
 	void Check_TimeOut();
 

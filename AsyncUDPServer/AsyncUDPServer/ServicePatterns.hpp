@@ -57,6 +57,7 @@ namespace pattern
 			return k * t + c;
 		}
 		//---------------------------------------------------------------
+		unsigned int co = 0;
 		void GetCurrentAngles(exoActuator actuators[], const int size, float ttime)
 		{
 			for (int i = 0; i < 23; i++)

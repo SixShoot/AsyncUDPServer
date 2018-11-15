@@ -60,7 +60,7 @@ void exoModule::UpdatePack()
 	ConnectionStatus = true;
 	NumberReceivPack++;
 	//boost::recursive_mutex::scoped_lock lk(cs);
-	Timer_TimeOut.expires_from_now(boost::posix_time::millisec(200));
+	Timer_TimeOut.expires_from_now(boost::posix_time::millisec(50));
 	
 }
 //----------------------------------------------------------------------------------------------
@@ -75,6 +75,11 @@ std::string exoModule::GetStringConnectStatus()
 {
 	if (ConnectionStatus == 0) return  "Disabled";
 	else return "Connected";
+}
+//----------------------------------------------------------------------------------------------
+bool exoModule::GetConnectStatus()
+{
+	return ConnectionStatus;
 }
 //----------------------------------------------------------------------------------------------
 void exoModule::ModuleService()

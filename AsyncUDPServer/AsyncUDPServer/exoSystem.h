@@ -1,6 +1,8 @@
 #pragma once
 
 
+#define USE_VREP
+
 #define ActuatorSize 10
 
 #include <cstdlib>
@@ -32,6 +34,8 @@ public:
 
 	void ControlFlow(int64_t t);
 	exoModule& GetExoModule(std::string name); 
+	bool GetStutusConnectAllModules();
+	
 
 	void SetPowerOn(uint8_t pon); // ¬ключить реле
 	void StopAll(); // ќстановить всЄ.

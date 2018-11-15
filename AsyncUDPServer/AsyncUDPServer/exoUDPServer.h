@@ -11,6 +11,8 @@
 #include "DataPackage.h"
 #include <plog/Log.h>
 
+#include "exoSystem.h"
+
 using boost::asio::ip::udp;
 
 class exoUDPServer

@@ -1,7 +1,6 @@
 #define _WIN32_WINNT 0x0501
 
 
-
 #include <cstdlib>
 #include <iostream>
 
@@ -24,13 +23,15 @@ using namespace boost::posix_time;
 
 boost::asio::io_service io_service;
 
-exoModule pModule_Teensy1(io_service, "192.168.0.106", "Teensy1");
-exoModule pModule_Nucleo(io_service, "192.168.0.102", "Nucleo");
-//exoModule pModule_Nucleo(io_service, "127.0.0.1", "Nucleo");
 
-std::vector<exoModule*> exoModules = { &pModule_Teensy1 , &pModule_Nucleo };
-
-
+#ifdef USE_VREP
+	exoModule pModule1(io_service, "127.0.0.1", "Nucleo");
+	std::vector<exoModule*> exoModules = { &pModule1 };
+#else
+	exoModule pModule1(io_service, "192.168.0.104", "Teensy1");
+	exoModule pModule2(io_service, "192.168.0.102", "Nucleo");
+	std::vector<exoModule*> exoModules = { &pModule1 , &pModule2 };
+#endif // USE_VREP
 
 //-----------------------------------------------------------------------------------------------------------------------
 

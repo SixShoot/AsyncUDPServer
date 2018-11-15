@@ -5,12 +5,12 @@
 #include <iostream>
 #include "exoSensor.hpp"
 #include "exoMotor.hpp"
+#include "exoSystem.h"
 
 
 class exoActuator
 {
 public:
-	bool Use_VREP = false; // Использовать ли V-REP
 
 	exoActuator()
 	{
@@ -39,11 +39,8 @@ public:
 		motor_->SetPWM(U);
 	}
 	//-----------------------------------------------------------------------------
-	void SetTargetPosition(float angle)
+	void PIDRegulator(float angle)
 	{
-		// Если используем симулятор
-		if (Use_VREP) { SetTargetPosition_VREP(angle); return; }
-
 		float error = (GetCurrentPosition() - angle);
 
 		if (error < 0)  motor_->SetDirection(1, 0);
@@ -56,6 +53,18 @@ public:
 
 		motor_->SetPWM(U);
 	}
+	//-----------------------------------------------------------------------------
+	void SetTargetPosition(float angle)
+	{
+		// Если используем симулятор
+		#ifdef USE_VREP
+			SetTargetPosition_VREP(angle);
+			return;
+		#else
+			PIDRegulator(angle);
+		#endif // USE_VREP
+	}
+	//----------------------------------------------------------------------------------
 	uint16_t GetCurrentPosition()
 	{
 		return sensor_->GetValue();//map(sensor_.GetValue(),1,1,1,10);

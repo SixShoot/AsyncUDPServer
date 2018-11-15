@@ -23,21 +23,25 @@ exoSystem::exoSystem(std::vector<exoModule*>& exoModules) : exoModules_(exoModul
 {
 	std::string smName[10] = { "A", "B","C" ,"D" ,"E" ,"F" ,"J" ,"H" ,"I" ,"J" };
 
-	СurrentSolver = EMPTY; // Устанавливаем пустой решатель
-
+	//СurrentSolver = EMPTY; // Устанавливаем пустой решатель
+	СurrentSolver = PATTERNS_DATA;
 
 	Nucleo = &GetExoModule("Nucleo"); // Получаем указатель на обьект Nucleo
 	
 	for (int i = 0; i < ActuatorSize; i++)
 	{
 		// Инициализация сенсоров
-		Sensor[i].Init(smName[i], GetExoModule("Teensy1"));
+		#ifdef USE_VREP
+			Sensor[i].Init(smName[i], GetExoModule("Nucleo"));
+		#else
+			Sensor[i].Init(smName[i], GetExoModule("Teensy1"));
+		#endif // USE_VREP
+
 
 		// Инициализация двигателей
 		Motors[i].Init(smName[i], GetExoModule("Nucleo"));
 
 		// Инициализация приводов
-		Actuator[i].Use_VREP = true;
 		Actuator[i].Init(smName[i], Motors[i], Sensor[i]);
 	}
 	
@@ -51,6 +55,17 @@ exoSystem::exoSystem(std::vector<exoModule*>& exoModules) : exoModules_(exoModul
 // Запуск ExoSystem
 void exoSystem::run()
 {
+	/*
+	// Ожидание подключения всех клиентов
+	while (1)
+	{
+		if (GetStutusConnectAllModules()) break;
+		boost::this_thread::sleep(boost::posix_time::millisec(200));
+	}
+	*/
+	
+	
+	
 	boost::posix_time::ptime mst1 = boost::posix_time::microsec_clock::local_time();
 	boost::posix_time::ptime mst2 = mst1;
 
@@ -63,7 +78,7 @@ void exoSystem::run()
 		ControlFlow(msdiff.total_milliseconds());
 		mst2 = boost::posix_time::microsec_clock::local_time();
 
-		boost::this_thread::sleep(boost::posix_time::millisec(50));
+		boost::this_thread::sleep(boost::posix_time::millisec(2));
 	}
 }
 //---------------------------------------------------------------------------------------------------------
@@ -72,13 +87,22 @@ void exoSystem::SetPowerOn(uint8_t pon)
 	Nucleo->server_pack.set2(PowerOn_Handle, pon);
 }
 //---------------------------------------------------------------------------------------------------------
+bool exoSystem::GetStutusConnectAllModules()
+{
+	int count = 0;
+	for (int i = 0; i < exoModules_.size(); i++) if (exoModules_[i]->GetConnectStatus()) count++;
+
+	if (count == exoModules_.size()) return true;
+	else return false;
+}
+//---------------------------------------------------------------------------------------------------------
 void exoSystem::StopAll() // Остановить всё.
 {
 	for (int i = 0; i < ActuatorSize; i++)
 	{
 		SetPowerOn(0);
 		Motors[i].SetPWM(0);
-		Motors[i].SetDirection(0, 0);
+		Motors[i].SetDirection(1, 1);
 		Actuator[i].SetTargetPosition(0);
 	}
 }
@@ -86,40 +110,39 @@ void exoSystem::StopAll() // Остановить всё.
 void exoSystem::ControlFlow(int64_t t)
 {
 	
-	// Выбор текущего решателя
-	switch (СurrentSolver)
-	{
-	case TXTDATA:			 // Задающие генерируются из файла txt (матрица)
+	// Проверяем статус подключения всех модулей
+	if (GetStutusConnectAllModules())
+	{		
 		
-		break;
-	case INVERSE_KINEMATICS: // Задающие генерируются из решения обратной задачи кинематики
-		IK.GetCurrentAngles(Actuator, ActuatorSize, t);
-		break;
-	case PATTERNS_DATA:		 // Задающие генерируются из файла паттернов exolite txt
-		sPatterns.GetCurrentAngles(Actuator, ActuatorSize, t / 100.0);
+		// Выбор текущего решателя
+		switch (СurrentSolver)
+		{
+		case TXTDATA:			 // Задающие генерируются из файла txt (матрица)
 
-		break;
-	default:
-		StopAll();
-		break;
+			break;
+		case INVERSE_KINEMATICS: // Задающие генерируются из решения обратной задачи кинематики
+			IK.GetCurrentAngles(Actuator, ActuatorSize, t);
+			break;
+		case PATTERNS_DATA:		 // Задающие генерируются из файла паттернов exolite txt
+			sPatterns.GetCurrentAngles(Actuator, ActuatorSize, t / 100.0);
+			//LOGD << "Time: " << t;
+			break;
+		default:
+			StopAll();
+			break;
+		}
+		
+		
+		
+		//Actuator[8].SetTargetPosition(40);
+		//Motors[8].SetPWM(40);
+		//Motors[8].SetDirection(1, 0);
+		
 	}
-	
-
-	/*
-	// Устанавливаем целевые углы
-	for (int i = 0; i < ActuatorSize; i++)
+	else
 	{
-		Actuator[i].SetTargetPosition(sPatterns.Angle[i]);
+		StopAll();
 	}
-	*/
-
-	/*
-	SetPowerOn(1);
-
-	Motors[8].SetDirection(0, 1);
-	Motors[8].SetPWM(10);
-	*/
-
 	
 }
 //---------------------------------------------------------------------------------------------------------
