@@ -15,13 +15,11 @@
 #include "exoSensor.hpp"
 #include "exoMotor.hpp"
 #include "exoActuator.hpp"
+#include "ServicePatterns.hpp"
+#include "exoInverseKinematics.hpp"
 
-//#include "ServicePatterns.hpp"
 
-
-//extern std::vector<exoModule*> exoModules;
-//extern std::vector<exoActuator*> exoActuators;
-
+enum SolverType { EMPTY, TXTDATA, INVERSE_KINEMATICS, PATTERNS_DATA }; // Тип решателя
 
 
 class exoSystem
@@ -34,6 +32,9 @@ public:
 
 	void ControlFlow(int64_t t);
 	exoModule& GetExoModule(std::string name); 
+
+	void SetPowerOn(uint8_t pon); // Включить реле
+	void StopAll(); // Остановить всё.
 
 	void run();
 
@@ -53,6 +54,9 @@ private:
 	// Служебные переменные
 	int PowerOn = 0;
 	uint8_t PowerOn_Handle = 0;
-	
 
+	pattern::ServicePatterns sPatterns;
+	exoInverseKinematics IK;
+	
+	SolverType СurrentSolver;
 };

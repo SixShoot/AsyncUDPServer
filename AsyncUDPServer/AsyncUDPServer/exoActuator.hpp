@@ -10,6 +10,7 @@
 class exoActuator
 {
 public:
+	bool Use_VREP = false; // Использовать ли V-REP
 
 	exoActuator()
 	{
@@ -28,9 +29,21 @@ public:
 		return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 	}
 	//-----------------------------------------------------------------------------
+	void SetTargetPosition_VREP(float angle)
+	{
+		if (angle < 0)  motor_->SetDirection(1, 0);
+		if (angle > 0)  motor_->SetDirection(0, 1);
+		if (angle == 0) motor_->SetDirection(1, 1);
 
+		float U = fabs(angle);
+		motor_->SetPWM(U);
+	}
+	//-----------------------------------------------------------------------------
 	void SetTargetPosition(float angle)
 	{
+		// Если используем симулятор
+		if (Use_VREP) { SetTargetPosition_VREP(angle); return; }
+
 		float error = (GetCurrentPosition() - angle);
 
 		if (error < 0)  motor_->SetDirection(1, 0);

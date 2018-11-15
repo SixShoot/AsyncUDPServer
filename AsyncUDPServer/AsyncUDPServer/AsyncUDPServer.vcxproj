@@ -133,8 +133,10 @@
     <ClInclude Include="exoMotor.hpp" />
     <ClInclude Include="exoPackage.hpp" />
     <ClInclude Include="exoSensor.hpp" />
+    <ClInclude Include="exoSolver.hpp" />
     <ClInclude Include="exoSystem.h" />
     <ClInclude Include="exoUDPServer.h" />
+    <ClInclude Include="exoInverseKinematics.hpp" />
     <ClInclude Include="ServicePatterns.hpp" />
   </ItemGroup>
   <ItemGroup>

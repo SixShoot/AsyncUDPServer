@@ -26,7 +26,11 @@ boost::asio::io_service io_service;
 
 exoModule pModule_Teensy1(io_service, "192.168.0.106", "Teensy1");
 exoModule pModule_Nucleo(io_service, "192.168.0.102", "Nucleo");
+//exoModule pModule_Nucleo(io_service, "127.0.0.1", "Nucleo");
+
 std::vector<exoModule*> exoModules = { &pModule_Teensy1 , &pModule_Nucleo };
+
+
 
 //-----------------------------------------------------------------------------------------------------------------------
 
@@ -72,10 +76,11 @@ int main(int argc, char* argv[])
 		if(!strcmp(argv[1], "-T"))
 			boost::thread TT(ThreadTerminal);
 	}
-		
+	
 	exoSystem exo_system(exoModules);
-	std::thread thread1([&exo_system]() { exo_system.run(); }); // Запускаем в отдельном потоке
-		
+	boost::thread thread1([&exo_system]() { exo_system.run(); }); // Запускаем в отдельном потоке
+
+
 	try
 	{
 		exoUDPServer server(io_service, exoModules, 4442);
@@ -87,7 +92,7 @@ int main(int argc, char* argv[])
 		LOGE << "Exception:  " << e.what();
 	}
 
-	//thr.join();
+	thread1.join();
 
 	return 0;
 }

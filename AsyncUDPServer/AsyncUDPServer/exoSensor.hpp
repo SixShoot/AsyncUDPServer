@@ -14,7 +14,12 @@ public:
 	{
 
 	}
-
+	//-------------------------------------------------------------------------------
+	void Init(std::string name, exoModule& module)
+	{
+		SetName(name);
+		SetModule(module);
+	}
 	//-------------------------------------------------------------------------------
 	void SetModule(exoModule& module)
 	{

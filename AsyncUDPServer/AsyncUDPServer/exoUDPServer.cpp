@@ -1,3 +1,5 @@
+#define _WIN32_WINNT 0x0501
+
 #include "exoUDPServer.h"
 
 
@@ -47,7 +49,7 @@ void exoUDPServer::handle_receive(const boost::system::error_code& error, size_t
 
 		if (Ident == false) // Если не удалось идентифицировать устройство
 		{
-			//std::cout << "Unknown device... IP: " << remote_endpoint_.address().to_string() << std::endl; //
+			std::cout << "Unknown device... IP: " << remote_endpoint_.address().to_string() << std::endl; //
 			LOGE << "Unknown device... IP: " << remote_endpoint_.address().to_string();
 		}
 
