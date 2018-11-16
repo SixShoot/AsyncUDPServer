@@ -4223,3 +4223,5 @@
 2018-11-15 17:41:23.829 DEBUG [11152] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
 2018-11-15 17:46:32.282 DEBUG [13352] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
 2018-11-15 23:04:32.488 DEBUG [6988] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-11-16 11:53:30.164 DEBUG [4916] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-11-16 12:00:05.226 DEBUG [9248] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442

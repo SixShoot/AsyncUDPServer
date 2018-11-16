@@ -41,13 +41,13 @@ public:
 
 	void SetPWM(uint8_t pwm)
 	{
-		module_->server_pack.set2<uint8_t>(PWM_Handle, pwm);
+		module_->server_pack.set<uint8_t>(PWM_Handle, pwm);
 	}
 
 	void SetDirection(uint8_t INA, uint8_t INB)
 	{
-		module_->server_pack.set2<uint8_t>(INA_Handle, INA);
-		module_->server_pack.set2<uint8_t>(INB_Handle, INB);
+		module_->server_pack.set<uint8_t>(INA_Handle, INA);
+		module_->server_pack.set<uint8_t>(INB_Handle, INB);
 	}
 
 	std::string GetName()

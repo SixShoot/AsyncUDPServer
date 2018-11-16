@@ -84,7 +84,7 @@ void exoSystem::run()
 //---------------------------------------------------------------------------------------------------------
 void exoSystem::SetPowerOn(uint8_t pon)
 {
-	Nucleo->server_pack.set2(PowerOn_Handle, pon);
+	Nucleo->server_pack.set(PowerOn_Handle, pon);
 }
 //---------------------------------------------------------------------------------------------------------
 bool exoSystem::GetStutusConnectAllModules()
