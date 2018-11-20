@@ -28,8 +28,8 @@ boost::asio::io_service io_service;
 	exoModule pModule1(io_service, "127.0.0.1", "Nucleo");
 	std::vector<exoModule*> exoModules = { &pModule1 };
 #else
-	exoModule pModule1(io_service, "192.168.0.104", "Teensy1");
-	exoModule pModule2(io_service, "192.168.0.102", "Nucleo");
+	exoModule pModule1(io_service, "192.168.0.102", "Teensy1");
+	exoModule pModule2(io_service, "192.168.0.101", "Nucleo");
 	std::vector<exoModule*> exoModules = { &pModule1 , &pModule2 };
 #endif // USE_VREP
 
@@ -67,7 +67,6 @@ void ThreadTerminal()
 //----------------------------------------------------------------------------------------
 int main(int argc, char* argv[])
 {
-
 	// Initialize the logger that will be measured.
 	plog::init(plog::debug, "logs\\log.txt", 1000000, 10); 
 
@@ -94,6 +93,6 @@ int main(int argc, char* argv[])
 	}
 
 	thread1.join();
-
+	
 	return 0;
 }

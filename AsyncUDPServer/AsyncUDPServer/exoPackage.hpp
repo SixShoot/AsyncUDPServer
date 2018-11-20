@@ -5,6 +5,8 @@
 
 #define SIZE_BUFF 1024
 
+#define SIZE_SEARCH_ARRAY 50
+
 #include <cstdlib>
 
 
@@ -26,6 +28,16 @@ namespace exo
 			buff[0] = 0;
 			set_item_index = 1;
 			get_item_index = 1;
+			current_index  = 0;
+
+			for (int i = 0; i < SIZE_SEARCH_ARRAY; i++)
+			{
+				address_array[i] = 0;
+				index_array[i] = 0;
+			}
+
+
+
 		}
 		//-----------------------------------------------------------------------------------
 		void SetLength(uint16_t ln)
@@ -146,7 +158,15 @@ namespace exo
 			return 0;
 		}
 		//-----------------------------------------------------------------------------------
-
+		template < typename T >
+		T getValue(uint16_t index)
+		{
+			uint8_t value_size = buff[index - 1];
+			uint8_t read_buffer[8];
+			for (int j = 0; j < value_size; j++) read_buffer[j] = buff[index + j];
+			return *(T*)read_buffer;
+		}
+		//-----------------------------------------------------------------------------------
 		template < typename T >
 		T get(const char *str, T default_)
 		{
@@ -154,13 +174,22 @@ namespace exo
 						boost::recursive_mutex::scoped_lock lk(cs);
 			#endif
 
-			uint16_t index = GetIndexData(str);
+			for (int i = 0; i < buff[0]; i++)
+			{
+				if (address_array[i] == str)
+				{
+					return getValue<T>(index_array[i]);
+				}
+			}
+						
+		    uint16_t index = GetIndexData(str);
 			if (index != 0)
 			{
-				uint8_t value_size = buff[index-1];
-				uint8_t read_buffer[8];
-				for (int j = 0; j < value_size; j++) read_buffer[j] = buff[index + j];
-				return *(T*)read_buffer;
+				address_array[current_index] = str;
+				index_array[current_index] = index;
+				current_index++;
+
+				return getValue<T>(index);
 			}
 
 			return default_;
@@ -172,6 +201,10 @@ namespace exo
 		}
 		char buff[SIZE_BUFF];
 	private:
+		const char *address_array[SIZE_SEARCH_ARRAY];
+		uint16_t  index_array[SIZE_SEARCH_ARRAY];
+		uint16_t  current_index;
+
 		uint16_t set_item_index;
 		uint16_t get_item_index;
 	};
