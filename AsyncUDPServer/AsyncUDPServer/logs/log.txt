@@ -4234,3 +4234,84 @@
 2018-11-20 11:00:39.828 DEBUG [8056] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
 2018-11-20 11:03:07.917 DEBUG [7676] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
 2018-11-20 11:43:21.689 DEBUG [6016] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-11-20 11:56:51.223 DEBUG [3360] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-11-20 12:13:37.033 DEBUG [7448] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-11-20 13:34:20.092 DEBUG [9920] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-11-20 13:35:37.809 DEBUG [9452] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-11-20 13:38:35.037 ERROR [9484] [exoActuator::LoadParameters@41] ActuatorA.ini: cannot open file
+2018-11-20 13:38:35.040 ERROR [9484] [exoActuator::LoadParameters@41] ActuatorB.ini: cannot open file
+2018-11-20 13:38:35.041 ERROR [9484] [exoActuator::LoadParameters@41] ActuatorC.ini: cannot open file
+2018-11-20 13:38:35.043 ERROR [9484] [exoActuator::LoadParameters@41] ActuatorD.ini: cannot open file
+2018-11-20 13:38:35.045 ERROR [9484] [exoActuator::LoadParameters@41] ActuatorE.ini: cannot open file
+2018-11-20 13:38:35.047 ERROR [9484] [exoActuator::LoadParameters@41] ActuatorF.ini: cannot open file
+2018-11-20 13:38:35.049 ERROR [9484] [exoActuator::LoadParameters@41] ActuatorJ.ini: cannot open file
+2018-11-20 13:38:35.051 ERROR [9484] [exoActuator::LoadParameters@41] ActuatorH.ini: cannot open file
+2018-11-20 13:38:35.053 ERROR [9484] [exoActuator::LoadParameters@41] ActuatorI.ini: cannot open file
+2018-11-20 13:38:35.054 ERROR [9484] [exoActuator::LoadParameters@41] ActuatorJ.ini: cannot open file
+2018-11-20 13:38:35.056 DEBUG [9484] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-11-20 13:39:44.819 ERROR [10208] [exoActuator::LoadParameters@41] ActuatorA.ini: cannot open file
+2018-11-20 13:39:44.822 ERROR [10208] [exoActuator::LoadParameters@41] ActuatorB.ini: cannot open file
+2018-11-20 13:39:44.828 ERROR [10208] [exoActuator::LoadParameters@41] ActuatorC.ini: cannot open file
+2018-11-20 13:39:44.831 ERROR [10208] [exoActuator::LoadParameters@41] ActuatorD.ini: cannot open file
+2018-11-20 13:39:44.834 ERROR [10208] [exoActuator::LoadParameters@41] ActuatorE.ini: cannot open file
+2018-11-20 13:39:44.838 ERROR [10208] [exoActuator::LoadParameters@41] ActuatorF.ini: cannot open file
+2018-11-20 13:39:44.841 ERROR [10208] [exoActuator::LoadParameters@41] ActuatorJ.ini: cannot open file
+2018-11-20 13:39:44.844 ERROR [10208] [exoActuator::LoadParameters@41] ActuatorH.ini: cannot open file
+2018-11-20 13:39:44.857 ERROR [10208] [exoActuator::LoadParameters@41] ActuatorI.ini: cannot open file
+2018-11-20 13:39:44.861 ERROR [10208] [exoActuator::LoadParameters@41] ActuatorJ.ini: cannot open file
+2018-11-20 13:39:44.863 DEBUG [10208] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-11-20 13:45:37.731 ERROR [2856] [exoActuator::LoadParameters@41] ActuatorA.ini: cannot open file
+2018-11-20 13:45:37.736 ERROR [2856] [exoActuator::LoadParameters@41] ActuatorB.ini: cannot open file
+2018-11-20 13:45:37.738 ERROR [2856] [exoActuator::LoadParameters@41] ActuatorC.ini: cannot open file
+2018-11-20 13:45:37.741 ERROR [2856] [exoActuator::LoadParameters@41] ActuatorD.ini: cannot open file
+2018-11-20 13:45:37.743 ERROR [2856] [exoActuator::LoadParameters@41] ActuatorE.ini: cannot open file
+2018-11-20 13:45:37.745 ERROR [2856] [exoActuator::LoadParameters@41] ActuatorF.ini: cannot open file
+2018-11-20 13:45:37.748 ERROR [2856] [exoActuator::LoadParameters@41] ActuatorJ.ini: cannot open file
+2018-11-20 13:45:37.750 ERROR [2856] [exoActuator::LoadParameters@41] ActuatorH.ini: cannot open file
+2018-11-20 13:45:37.753 ERROR [2856] [exoActuator::LoadParameters@41] ActuatorI.ini: cannot open file
+2018-11-20 13:45:37.757 ERROR [2856] [exoActuator::LoadParameters@41] No such node (Section1.Value1)
+2018-11-20 13:45:37.759 DEBUG [2856] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-11-20 13:48:14.445 ERROR [4476] [exoActuator::LoadParameters@41] ActuatorA.ini: cannot open file
+2018-11-20 13:48:21.312 ERROR [4476] [exoActuator::LoadParameters@41] ActuatorB.ini: cannot open file
+2018-11-20 13:48:23.432 ERROR [4476] [exoActuator::LoadParameters@41] ActuatorC.ini: cannot open file
+2018-11-20 13:48:25.704 ERROR [4476] [exoActuator::LoadParameters@41] ActuatorD.ini: cannot open file
+2018-11-20 13:48:27.925 ERROR [4476] [exoActuator::LoadParameters@41] ActuatorE.ini: cannot open file
+2018-11-20 13:48:30.054 ERROR [4476] [exoActuator::LoadParameters@41] ActuatorF.ini: cannot open file
+2018-11-20 13:48:32.129 ERROR [4476] [exoActuator::LoadParameters@41] ActuatorJ.ini: cannot open file
+2018-11-20 13:48:34.158 ERROR [4476] [exoActuator::LoadParameters@41] ActuatorH.ini: cannot open file
+2018-11-20 13:48:39.985 ERROR [4476] [exoActuator::LoadParameters@41] ActuatorI.ini: cannot open file
+2018-11-20 13:48:41.711 ERROR [4476] [exoActuator::LoadParameters@41] ActuatorJ.ini: cannot open file
+2018-11-20 13:48:43.533 DEBUG [4476] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-11-20 13:51:12.358 ERROR [5684] [exoActuator::LoadParameters@41] ActuatorA.ini: cannot open file
+2018-11-20 13:51:12.363 ERROR [5684] [exoActuator::LoadParameters@41] ActuatorB.ini: cannot open file
+2018-11-20 13:51:12.367 ERROR [5684] [exoActuator::LoadParameters@41] ActuatorC.ini: cannot open file
+2018-11-20 13:51:12.371 ERROR [5684] [exoActuator::LoadParameters@41] ActuatorD.ini: cannot open file
+2018-11-20 13:51:12.376 ERROR [5684] [exoActuator::LoadParameters@41] ActuatorE.ini: cannot open file
+2018-11-20 13:51:12.380 ERROR [5684] [exoActuator::LoadParameters@41] ActuatorF.ini: cannot open file
+2018-11-20 13:51:12.384 ERROR [5684] [exoActuator::LoadParameters@41] ActuatorJ.ini: cannot open file
+2018-11-20 13:51:12.389 ERROR [5684] [exoActuator::LoadParameters@41] ActuatorH.ini: cannot open file
+2018-11-20 13:51:12.393 ERROR [5684] [exoActuator::LoadParameters@41] ActuatorI.ini: cannot open file
+2018-11-20 13:51:12.398 ERROR [5684] [exoActuator::LoadParameters@41] ActuatorJ.ini: cannot open file
+2018-11-20 13:51:12.403 DEBUG [5684] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-11-20 14:14:32.191 ERROR [9244] [exoActuator::LoadConfig@69] ActuatorA.ini: cannot open file
+2018-11-20 14:14:32.199 ERROR [9244] [exoActuator::LoadConfig@69] ActuatorB.ini: cannot open file
+2018-11-20 14:14:32.205 ERROR [9244] [exoActuator::LoadConfig@69] ActuatorC.ini: cannot open file
+2018-11-20 14:14:32.214 ERROR [9244] [exoActuator::LoadConfig@69] ActuatorD.ini: cannot open file
+2018-11-20 14:14:32.219 ERROR [9244] [exoActuator::LoadConfig@69] ActuatorE.ini: cannot open file
+2018-11-20 14:14:32.222 ERROR [9244] [exoActuator::LoadConfig@69] ActuatorF.ini: cannot open file
+2018-11-20 14:14:32.224 ERROR [9244] [exoActuator::LoadConfig@69] ActuatorJ.ini: cannot open file
+2018-11-20 14:14:32.225 ERROR [9244] [exoActuator::LoadConfig@69] ActuatorH.ini: cannot open file
+2018-11-20 14:14:32.227 ERROR [9244] [exoActuator::LoadConfig@69] ActuatorI.ini: cannot open file
+2018-11-20 14:14:32.228 ERROR [9244] [exoActuator::LoadConfig@69] ActuatorJ.ini: cannot open file
+2018-11-20 14:14:32.230 DEBUG [9244] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-11-20 14:21:03.534 DEBUG [11804] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-11-20 14:22:55.723 DEBUG [12244] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-11-20 14:23:20.904 DEBUG [12068] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-11-20 14:23:29.802 DEBUG [9348] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-11-20 14:30:21.506 DEBUG [1104] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-11-20 14:31:48.493 DEBUG [11520] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-11-20 15:26:51.550 DEBUG [3116] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-11-20 15:27:34.300 DEBUG [11828] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-11-20 15:29:22.625 DEBUG [10728] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-11-20 15:29:56.749 DEBUG [1220] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-11-20 15:31:21.104 DEBUG [9720] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442

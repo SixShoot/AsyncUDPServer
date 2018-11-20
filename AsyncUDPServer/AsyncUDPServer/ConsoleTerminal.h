@@ -15,7 +15,7 @@ volatile sig_atomic_t flag = 0;
 
 extern std::vector<exoModule*> exoModules;
 
-//extern exoSystem exo_system(exoModules);
+exoSystem* pExo_system;
 
 // Базовая структура команд
 struct command
@@ -51,13 +51,15 @@ struct print_command : command
 				std::cout << std::endl;
 				for (int i = 0; i < ActuatorSize; i++)
 				{
-					//std::cout << "Actuator: " << i << " Name: " << exo_system.Actuator[i].GetName() << std::endl;
+					std::cout << "Actuator: " << i << " Name: " << pExo_system->Actuator[i].GetName() << std::endl;
 				}
 				std::cout << std::endl;
+				/*
 				for (int i = 0; i < ActuatorSize; i++)
 				{
-					std::cout << "Motor: " << i << " Name: " << "fgf" /*exoMotors[i]->GetName() */ << std::endl;
+					std::cout << "Motor: " << i << " Name: " << pExo_system-> exoMotors[i]->GetName()  << std::endl;
 				}
+				*/
 
 			}
 			else
@@ -75,7 +77,7 @@ struct print_command : command
 			{
 				if (args[0] == "-a")
 				{
-					//std::cout << "Actuator: " << exo_system.Actuator[Namber].GetName() << " Position: " << exo_system.Actuator[Namber].GetCurrentPosition() << std::endl;
+					std::cout << "Actuator: " << pExo_system->Actuator[Namber].GetName() << " Position: " << pExo_system->Actuator[Namber].GetCurrentPosition() << std::endl;
 				}
 				else if (args[0] == "-m")
 				{

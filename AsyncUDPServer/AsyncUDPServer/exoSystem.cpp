@@ -55,14 +55,14 @@ exoSystem::exoSystem(std::vector<exoModule*>& exoModules) : exoModules_(exoModul
 // Запуск ExoSystem
 void exoSystem::run()
 {
-	/*
+	
 	// Ожидание подключения всех клиентов
 	while (1)
 	{
 		if (GetStutusConnectAllModules()) break;
 		boost::this_thread::sleep(boost::posix_time::millisec(200));
 	}
-	*/
+	
 	
 	
 	

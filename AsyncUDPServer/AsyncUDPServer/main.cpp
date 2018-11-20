@@ -78,6 +78,9 @@ int main(int argc, char* argv[])
 	}
 	
 	exoSystem exo_system(exoModules);
+	// Для терминала
+	pExo_system = &exo_system;
+
 	boost::thread thread1([&exo_system]() { exo_system.run(); }); // Запускаем в отдельном потоке
 
 
