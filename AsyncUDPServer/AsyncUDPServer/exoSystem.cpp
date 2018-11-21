@@ -21,7 +21,7 @@ exoModule& exoSystem::GetExoModule(std::string name)
 
 exoSystem::exoSystem(std::vector<exoModule*>& exoModules) : exoModules_(exoModules)
 {
-	std::string smName[10] = { "A", "B","C" ,"D" ,"E" ,"F" ,"J" ,"H" ,"I" ,"J" };
+	std::string smName[10] = { "A", "B","C" ,"D" ,"E" ,"F" ,"G" ,"H" ,"I" ,"J" };
 
 	//СurrentSolver = EMPTY; // Устанавливаем пустой решатель
 	СurrentSolver = PATTERNS_DATA;
@@ -113,7 +113,8 @@ void exoSystem::ControlFlow(int64_t t)
 	// Проверяем статус подключения всех модулей
 	if (GetStutusConnectAllModules())
 	{		
-		
+		for (int i = 0; i < ActuatorSize; i++) Actuator[i].PIDRegulator();
+		/*
 		// Выбор текущего решателя
 		switch (СurrentSolver)
 		{
@@ -131,12 +132,19 @@ void exoSystem::ControlFlow(int64_t t)
 			StopAll();
 			break;
 		}
+		*/
 		
-		
-		
+		SetPowerOn(1);
 		//Actuator[8].SetTargetPosition(40);
-		//Motors[8].SetPWM(40);
-		//Motors[8].SetDirection(1, 0);
+
+		
+		
+
+		
+		//Motors[9].SetPWM(15);
+		//Motors[9].SetDirection(1, 0);
+
+		//Actuator[9].SetTargetPosition(10);
 		
 	}
 	else

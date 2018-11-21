@@ -100,9 +100,9 @@ public:
 		motor_->SetPWM(U);
 	}
 	//-----------------------------------------------------------------------------
-	void PIDRegulator(float angle)
+	void PIDRegulator()
 	{
-		float error = (GetCurrentPosition() - angle);
+		float error = (GetCurrentPosition() - TargetAngle);
 
 		if (error < 0)  motor_->SetDirection(1, 0);
 		if (error > 0)  motor_->SetDirection(0, 1);
@@ -122,20 +122,23 @@ public:
 			SetTargetPosition_VREP(angle);
 			return;
 		#else
-			PIDRegulator(angle);
+			//PIDRegulator(angle);
+			TargetAngle = angle;
 		#endif // USE_VREP
 	}
 	//----------------------------------------------------------------------------------
-	uint16_t GetCurrentPosition()
+	float GetCurrentPosition()
 	{
-		return sensor_->GetValue();//map(sensor_.GetValue(),1,1,1,10);
-		//return map(sensor_->GetValue(),in_min,in_max,out_min,out_max);
+		//return sensor_->GetValue();//map(sensor_.GetValue(),1,1,1,10);
+		//float angle = map(sensor_->GetValue(), in_min, in_max, out_min, out_max);
+		return map(sensor_->GetValue(),in_min,in_max,out_min,out_max);
 	}
+	//----------------------------------------------------------------------------------
 	std::string GetName()
 	{
 		return name_;
 	}
-
+	//----------------------------------------------------------------------------------
 	~exoActuator()
 	{
 
@@ -159,5 +162,7 @@ private:
 	float in_max;
 	float out_min;
 	float out_max;
+
+	float TargetAngle = 0;
 
 };

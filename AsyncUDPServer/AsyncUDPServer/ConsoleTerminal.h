@@ -138,6 +138,30 @@ struct help_command : command
 };
 //------------------------------------------------------
 
+// 
+struct set_command : command
+{
+	virtual void exec(args_type const& args) const override
+	{
+		if (args.size() == 3)
+		{
+			if (args[0] == "-a")
+			{
+				int Number = 0;
+				std::istringstream ist(args[1]);
+				ist >> Number;
+
+				float angle = 0;
+				std::istringstream ist2(args[2]);
+				ist2 >> angle;
+				
+				pExo_system->Actuator[Number].SetTargetPosition(angle);
+			}
+		}
+	}
+};
+//------------------------------------------------------
+
 void my_function(int sig)
 { // can be called asynchronously
 	flag = 1; // set flag
@@ -152,5 +176,6 @@ void InitCommand()
 {
 	commandMap["print"] = command_ptr(new print_command);
 	commandMap["help"] = command_ptr(new help_command);
+	commandMap["set"] = command_ptr(new set_command);
 	
 }
