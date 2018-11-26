@@ -102,7 +102,7 @@ void exoSystem::StopAll() // Остановить всё.
 	{
 		SetPowerOn(0);
 		Motors[i].SetPWM(0);
-		Motors[i].SetDirection(1, 1);
+		Motors[i].SetDirection(0, 0);
 		Actuator[i].SetTargetPosition(0);
 	}
 }

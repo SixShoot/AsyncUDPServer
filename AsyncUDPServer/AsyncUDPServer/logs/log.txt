@@ -4359,3 +4359,15 @@
 2018-11-20 18:27:55.268 DEBUG [11240] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
 2018-11-21 12:57:54.298 DEBUG [10760] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
 2018-11-21 12:57:54.301 ERROR [10760] [exoUDPServer::handle_receive@57] Unknown device... IP: 192.168.0.100
+2018-11-23 15:55:25.921 DEBUG [3028] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-11-23 15:56:10.406 DEBUG [4556] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-11-23 15:57:20.525 DEBUG [9148] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-11-23 16:03:59.148 DEBUG [7524] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-11-23 16:04:22.525 DEBUG [9444] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-11-23 16:05:54.340 DEBUG [9232] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-11-23 16:24:08.271 DEBUG [9076] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-11-23 16:30:38.520 DEBUG [4472] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-11-23 16:59:05.583 DEBUG [10060] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-11-23 17:11:50.877 DEBUG [6072] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-11-26 13:48:21.733 DEBUG [7596] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-11-26 13:50:16.925 DEBUG [5948] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442

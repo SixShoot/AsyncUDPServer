@@ -51,7 +51,7 @@ struct print_command : command
 				std::cout << std::endl;
 				for (int i = 0; i < ActuatorSize; i++)
 				{
-					std::cout << "Actuator: " << i << " Name: " << pExo_system->Actuator[i].GetName() << std::endl;
+					std::cout << "Actuator: " << i << " Name: " << pExo_system->Actuator[i].GetName() << " Position: " << pExo_system->Actuator[i].GetCurrentPosition() << std::endl;
 				}
 				std::cout << std::endl;
 				/*

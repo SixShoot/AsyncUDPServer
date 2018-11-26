@@ -106,7 +106,7 @@ public:
 
 		if (error < 0)  motor_->SetDirection(1, 0);
 		if (error > 0)  motor_->SetDirection(0, 1);
-		if (error == 0) motor_->SetDirection(1, 1);
+		if (error == 0) motor_->SetDirection(0, 0);
 
 		float U = fabs(error) * Kp;
 
@@ -129,9 +129,14 @@ public:
 	//----------------------------------------------------------------------------------
 	float GetCurrentPosition()
 	{
-		//return sensor_->GetValue();//map(sensor_.GetValue(),1,1,1,10);
-		//float angle = map(sensor_->GetValue(), in_min, in_max, out_min, out_max);
-		return map(sensor_->GetValue(),in_min,in_max,out_min,out_max);
+		uint16_t Value = sensor_->GetValue();
+
+		if (Value == 0) // Ошибка
+		{
+			ERROR_ = 1;
+		}
+
+		return map(Value,in_min,in_max,out_min,out_max);
 	}
 	//----------------------------------------------------------------------------------
 	std::string GetName()
@@ -151,6 +156,8 @@ private:
 	exoSensor* sensor_;
 
 	boost::property_tree::ptree pt; // Для работы с файлами настроек
+
+	uint16_t ERROR_ = 0;
 
 	// Параметры регулятора
 	float Kp;
