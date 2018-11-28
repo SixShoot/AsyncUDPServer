@@ -110,7 +110,7 @@ public:
 
 		float U = fabs(error) * Kp;
 
-		if (U > 50) U = 50; 
+		if (U > 100) U = 100; 
 
 		motor_->SetPWM(U);
 	}

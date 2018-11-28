@@ -34,7 +34,12 @@ exoSystem::exoSystem(std::vector<exoModule*>& exoModules) : exoModules_(exoModul
 		#ifdef USE_VREP
 			Sensor[i].Init(smName[i], GetExoModule("Nucleo"));
 		#else
-			Sensor[i].Init(smName[i], GetExoModule("Teensy1"));
+			
+			if (((i >> 1) << 1) == i) { /* четное */  
+				Sensor[i].Init(smName[i], GetExoModule("TeensyL"));			}
+			else { /* нечетное */   
+				Sensor[i].Init(smName[i], GetExoModule("TeensyR"));			}
+	
 		#endif // USE_VREP
 
 
