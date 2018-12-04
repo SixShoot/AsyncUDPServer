@@ -23,16 +23,19 @@
 
 enum SolverType { EMPTY, TXTDATA, INVERSE_KINEMATICS, PATTERNS_DATA }; // Тип решателя
 
+enum ErrorType { NOERROR_, DRIVEPROTECTION, SENSORERROR, ERROR2, ERROR3}; // Тип решателя
+
 
 class exoSystem
 {
 public:
 	exoActuator   Actuator[ActuatorSize];
+	pattern::ServicePatterns sPatterns;
 
 	exoSystem(std::vector<exoModule*>& exoModules);
 
 
-	void ControlFlow(int64_t t);
+	void ControlFlow(uint32_t t);
 	exoModule& GetExoModule(std::string name); 
 	bool GetStutusConnectAllModules();
 	
@@ -47,6 +50,8 @@ public:
 
 private:
 
+	ErrorType ERROR_ = NOERROR_;
+
 	std::vector<exoModule*>& exoModules_;
 
 	exoSensor     Sensor[10];
@@ -59,7 +64,7 @@ private:
 	int PowerOn = 0;
 	uint8_t PowerOn_Handle = 0;
 
-	pattern::ServicePatterns sPatterns;
+	
 	exoInverseKinematics IK;
 	
 	SolverType СurrentSolver;

@@ -138,7 +138,6 @@ struct help_command : command
 };
 //------------------------------------------------------
 
-// 
 struct set_command : command
 {
 	virtual void exec(args_type const& args) const override
@@ -158,6 +157,37 @@ struct set_command : command
 				pExo_system->Actuator[Number].SetTargetPosition(angle);
 			}
 		}
+		else if (args.size() == 2)
+		{
+			if (args[0] == "all")
+			{
+				float angle = 0;
+				std::istringstream ist2(args[1]);
+				ist2 >> angle;
+
+				for (int i = 0; i < ActuatorSize; i++)
+				{
+					pExo_system->Actuator[i].SetTargetPosition(angle);
+				}
+
+			}
+		}
+	}
+};
+//------------------------------------------------------
+
+struct pattern_command : command
+{
+	virtual void exec(args_type const& args) const override
+	{
+		if (args[0] == "start")
+		{
+			pExo_system->sPatterns.StartPattern();
+		}
+		else if (args[0] == "stop")
+		{
+			pExo_system->sPatterns.StopPattern();
+		}
 	}
 };
 //------------------------------------------------------
@@ -174,8 +204,9 @@ command_map commandMap;
 
 void InitCommand()
 {
-	commandMap["print"] = command_ptr(new print_command);
-	commandMap["help"] = command_ptr(new help_command);
-	commandMap["set"] = command_ptr(new set_command);
+	commandMap["print"]   = command_ptr(new print_command);
+	commandMap["help"]    = command_ptr(new help_command);
+	commandMap["set"]     = command_ptr(new set_command);
+	commandMap["pattern"] = command_ptr(new pattern_command);
 	
 }

@@ -50,7 +50,8 @@ exoSystem::exoSystem(std::vector<exoModule*>& exoModules) : exoModules_(exoModul
 		Actuator[i].Init(smName[i], Motors[i], Sensor[i]);
 	}
 	
-	sPatterns.OpenPatterns("E:\\Antipov\\Walk_1720_Theta4Active\\Pattern_Step1.txt");
+	//sPatterns.OpenPatterns("E:\\Antipov\\Walk_1720_Theta4Active\\Pattern_Step1.txt");
+	sPatterns.OpenPatterns("C:\\Users\\Антипов\\Downloads\\ExoPatterns\\Сесть.txt");
 
 	// Инициализация реле
 	PowerOn_Handle = Nucleo->server_pack.init<uint8_t>("ULN");
@@ -103,23 +104,43 @@ bool exoSystem::GetStutusConnectAllModules()
 //---------------------------------------------------------------------------------------------------------
 void exoSystem::StopAll() // Остановить всё.
 {
+	SetPowerOn(0);
 	for (int i = 0; i < ActuatorSize; i++)
 	{
-		SetPowerOn(0);
 		Motors[i].SetPWM(0);
 		Motors[i].SetDirection(0, 0);
 		Actuator[i].SetTargetPosition(0);
 	}
 }
 //---------------------------------------------------------------------------------------------------------
-void exoSystem::ControlFlow(int64_t t)
+void exoSystem::ControlFlow(uint32_t t)
 {
 	
 	// Проверяем статус подключения всех модулей
-	if (GetStutusConnectAllModules())
+	if (GetStutusConnectAllModules() && (ERROR_ == NOERROR_))
 	{		
-		for (int i = 0; i < ActuatorSize; i++) Actuator[i].PIDRegulator();
-		/*
+		
+		#ifndef USE_VREP
+			for (int i = 0; i < ActuatorSize; i++)
+			{
+				Actuator[i].PIDRegulator(t);
+
+				// Защита от обрыва датчика
+				if (Actuator[i].DriveProtection(t))
+				{
+					ERROR_ = DRIVEPROTECTION;
+					StopAll();
+				}
+
+				if (Actuator[i].ERROR_ != 0)
+				{
+					ERROR_ = SENSORERROR;
+					StopAll();
+				}
+			}
+		#endif // USE_VREP
+
+
 		// Выбор текущего решателя
 		switch (СurrentSolver)
 		{
@@ -137,20 +158,9 @@ void exoSystem::ControlFlow(int64_t t)
 			StopAll();
 			break;
 		}
-		*/
-		
-		SetPowerOn(1);
-		//Actuator[8].SetTargetPosition(40);
-
 		
 		
-
-		
-		//Motors[9].SetPWM(15);
-		//Motors[9].SetDirection(1, 0);
-
-		//Actuator[9].SetTargetPosition(10);
-		
+		SetPowerOn(1); // Включаем реле		
 	}
 	else
 	{

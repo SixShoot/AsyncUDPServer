@@ -18,6 +18,8 @@ class exoActuator
 {
 public:
 
+	uint16_t ERROR_ = 0;
+
 	exoActuator()
 	{
 
@@ -90,6 +92,40 @@ public:
 		return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 	}
 	//-----------------------------------------------------------------------------
+	bool DriveProtection(uint32_t t) // Защита от обрыва привода или датчика
+	{
+		if (motor_->GetCurrentPWM() >= 10)
+		{			
+			if (Protect_CurrentPosition == -999) Protect_CurrentPosition = CurrentPosition;			
+			if(Protect_PWMTime == 0) Protect_PWMTime = t;
+
+			if ((t - Protect_PWMTime) > 400)
+			{
+				if (fabs(Protect_CurrentPosition - CurrentPosition) < 3)
+				{
+					Protect_PWMTime = 0;
+					Protect_CurrentPosition = -999;
+					LOGE << "ERROR: Actuator" << GetName() << " - Drive Protection.";
+					std::cout << "ERROR: Actuator" << GetName() << " - Drive Protection." << std::endl;
+
+					return true;
+				}
+				else
+				{
+					Protect_PWMTime = 0;
+					Protect_CurrentPosition = -999;
+				}
+			}	
+		}
+		else
+		{
+			Protect_PWMTime = 0;
+			Protect_CurrentPosition = -999;
+		}
+
+		return false;
+	}
+	//-----------------------------------------------------------------------------
 	void SetTargetPosition_VREP(float angle)
 	{
 		if (angle < 0)  motor_->SetDirection(1, 0);
@@ -100,9 +136,15 @@ public:
 		motor_->SetPWM(U);
 	}
 	//-----------------------------------------------------------------------------
-	void PIDRegulator()
+	void PIDRegulator(uint32_t t)
 	{
-		float error = (GetCurrentPosition() - TargetAngle);
+		if (TargetAngle > out_max) TargetAngle = out_max;
+		if (TargetAngle < out_min) TargetAngle = out_min;
+		
+		
+		CurrentPosition = GetCurrentPosition();
+		
+		float error = (CurrentPosition - TargetAngle);
 
 		if (error < 0)  motor_->SetDirection(1, 0);
 		if (error > 0)  motor_->SetDirection(0, 1);
@@ -113,6 +155,8 @@ public:
 		if (U > 100) U = 100; 
 
 		motor_->SetPWM(U);
+
+
 	}
 	//-----------------------------------------------------------------------------
 	void SetTargetPosition(float angle)
@@ -122,7 +166,6 @@ public:
 			SetTargetPosition_VREP(angle);
 			return;
 		#else
-			//PIDRegulator(angle);
 			TargetAngle = angle;
 		#endif // USE_VREP
 	}
@@ -134,7 +177,12 @@ public:
 		if (Value == 0) // Ошибка
 		{
 			ERROR_ = 1;
+			LOGE << "ERROR: Sensor" << GetName() << " - ADC = 0";
 		}
+
+		#ifdef USE_VREP
+			return Value;
+		#endif // USE_VREP
 
 		return map(Value,in_min,in_max,out_min,out_max);
 	}
@@ -157,8 +205,6 @@ private:
 
 	boost::property_tree::ptree pt; // Для работы с файлами настроек
 
-	uint16_t ERROR_ = 0;
-
 	// Параметры регулятора
 	float Kp;
 	float Ki;
@@ -170,6 +216,11 @@ private:
 	float out_min;
 	float out_max;
 
-	float TargetAngle = 0;
+	float TargetAngle     = 0;
+	float CurrentPosition = 0;
+
+	// Защита привода
+	uint32_t Protect_PWMTime = 0;
+	float    Protect_CurrentPosition = -999;
 
 };

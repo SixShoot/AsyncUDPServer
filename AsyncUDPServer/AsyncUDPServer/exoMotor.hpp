@@ -27,6 +27,10 @@ public:
 		SetPWM(0);
 		SetDirection(0, 0);
 
+		CurrentPWM = 0;
+		CurrentINA = 0;
+		CurrentINB = 0;
+
 	}
 	//-------------------------------------------------------------------------------
 	void SetModule(exoModule& module)
@@ -38,23 +42,34 @@ public:
 	{
 		name_ = name;
 	}
-
+	//-------------------------------------------------------------------------------
 	void SetPWM(uint8_t pwm)
 	{
-		module_->server_pack.set<uint8_t>(PWM_Handle, pwm);
+		CurrentPWM = pwm;
+		module_->server_pack.set<uint8_t>(PWM_Handle, CurrentPWM);
 	}
-
+	//-------------------------------------------------------------------------------
 	void SetDirection(uint8_t INA, uint8_t INB)
 	{
-		module_->server_pack.set<uint8_t>(INA_Handle, INA);
-		module_->server_pack.set<uint8_t>(INB_Handle, INB);
-	}
+		CurrentINA = INA;
+		CurrentINB = INB;
 
+		module_->server_pack.set<uint8_t>(INA_Handle, CurrentINA);
+		module_->server_pack.set<uint8_t>(INB_Handle, CurrentINB);
+	}
+	//-------------------------------------------------------------------------------
 	std::string GetName()
 	{
 		return name_;
 	}
+	//-------------------------------------------------------------------------------
+	uint8_t GetCurrentPWM()
+	{
+		return CurrentPWM;
+	}
+	//-------------------------------------------------------------------------------
 
+	//-------------------------------------------------------------------------------
 	~exoMotor()
 	{
 
@@ -68,5 +83,9 @@ private:
 	uint8_t PWM_Handle;
 	uint8_t INA_Handle;
 	uint8_t INB_Handle;
+
+	uint8_t CurrentPWM;
+	uint8_t CurrentINA;
+	uint8_t CurrentINB;
 
 };

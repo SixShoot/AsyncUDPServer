@@ -20,7 +20,8 @@ namespace pattern
 		//------------------------------------------------------------------------------
 		ServicePatterns()
 		{
-
+			SolverStartTime = 0;
+			isRun = false;
 		}
 		//------------------------------------------------------------------------------
 		void OpenPatterns(std::string file_)
@@ -57,22 +58,41 @@ namespace pattern
 			return k * t + c;
 		}
 		//---------------------------------------------------------------
-		unsigned int co = 0;
-		void GetCurrentAngles(exoActuator actuators[], const int size, float ttime)
+		void StartPattern()
 		{
-			for (int i = 0; i < 23; i++)
+			isRun = true;
+		}
+		//---------------------------------------------------------------
+		void StopPattern()
+		{
+			isRun = false;
+			SolverStartTime = 0;
+		}
+		//---------------------------------------------------------------
+		void GetCurrentAngles(exoActuator actuators[], const int size, uint32_t ttime)
+		{
+			if (isRun)
 			{
-				//if (ttime >= ArrayData[22][0]) StopSimulation();
+				if (SolverStartTime == 0) SolverStartTime = ttime;
 
-				if ((ttime >= ArrayData[i][0]) && (ttime <= ArrayData[i + 1][0]))
+				uint32_t SolverTime = ttime - SolverStartTime;
+
+				for (int i = 0; i < 23; i++)
 				{
-					for (int j = 0; j < size; j++)
-					{						
-						actuators[j].SetTargetPosition(GetLine(ArrayData[i][j + 1], ArrayData[i + 1][j + 1], ArrayData[i][0], ArrayData[i + 1][0], ttime));
+					if (SolverTime >= ArrayData[22][0]) StopPattern();
+
+					if ((SolverTime >= ArrayData[i][0]) && (SolverTime <= ArrayData[i + 1][0]))
+					{
+						for (int j = 0; j < size; j++)
+						{
+							actuators[j].SetTargetPosition(GetLine(ArrayData[i][j + 1], ArrayData[i + 1][j + 1], ArrayData[i][0], ArrayData[i + 1][0], SolverTime));
+						}
+						break;
 					}
-					break;
 				}
-			}
+
+			}			
+
 		}
 		//-------------------------------------------------------------------
 		~ServicePatterns()
@@ -82,6 +102,9 @@ namespace pattern
 
 	private:
 		int ArrayData[23][11];
+
+		uint32_t SolverStartTime;
+		bool isRun;
 
 	};
 

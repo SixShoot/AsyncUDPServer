@@ -25,11 +25,11 @@ boost::asio::io_service io_service;
 
 
 #ifdef USE_VREP
-	exoModule pModule1(io_service, "127.0.0.1", "Nucleo");
+	exoModule pModule1(io_service, "127.0.0.1", "Nucleo"); // 127.0.0.1 - 192.168.0.100
 	std::vector<exoModule*> exoModules = { &pModule1 };
 #else
 	exoModule pModule1(io_service, "192.168.0.102", "TeensyR");
-	exoModule pModule2(io_service, "192.168.0.103", "TeensyL");
+	exoModule pModule2(io_service, "192.168.0.104", "TeensyL");
 	exoModule pModule3(io_service, "192.168.0.101", "Nucleo");
 	std::vector<exoModule*> exoModules = { &pModule1 , &pModule2 , &pModule3 };
 #endif // USE_VREP
