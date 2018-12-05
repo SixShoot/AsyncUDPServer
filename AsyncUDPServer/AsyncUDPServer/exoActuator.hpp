@@ -94,19 +94,20 @@ public:
 	//-----------------------------------------------------------------------------
 	bool DriveProtection(uint32_t t) // Защита от обрыва привода или датчика
 	{
-		if (motor_->GetCurrentPWM() >= 10)
+		if (motor_->GetCurrentPWM() > 30)
 		{			
 			if (Protect_CurrentPosition == -999) Protect_CurrentPosition = CurrentPosition;			
 			if(Protect_PWMTime == 0) Protect_PWMTime = t;
 
-			if ((t - Protect_PWMTime) > 400)
+			if ((t - Protect_PWMTime) > 1000)
 			{
-				if (fabs(Protect_CurrentPosition - CurrentPosition) < 3)
+				float er = fabs(Protect_CurrentPosition - CurrentPosition);
+				if (er < 0.6)
 				{
 					Protect_PWMTime = 0;
 					Protect_CurrentPosition = -999;
-					LOGE << "ERROR: Actuator" << GetName() << " - Drive Protection.";
-					std::cout << "ERROR: Actuator" << GetName() << " - Drive Protection." << std::endl;
+					LOGE << "ERROR: Actuator" << GetName() << " - Drive Protection." << " ErrorPosition: " << er;
+					std::cout << "ERROR: Actuator" << GetName() << " - Drive Protection." << " ErrorPosition: "<< er << std::endl;
 
 					return true;
 				}
