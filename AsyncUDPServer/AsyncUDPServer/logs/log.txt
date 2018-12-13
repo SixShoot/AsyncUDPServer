@@ -89,3 +89,72 @@
 2018-12-05 13:39:13.916 DEBUG [9496] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
 2018-12-05 13:41:04.159 DEBUG [9372] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
 2018-12-05 13:42:08.784 ERROR [8924] [exoActuator::GetCurrentPosition@181] ERROR: SensorD - ADC = 0
+2018-12-05 14:59:03.232 DEBUG [6316] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-12-05 15:00:23.201 DEBUG [7748] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-12-05 15:00:34.091 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorA - ADC = 0
+2018-12-05 15:00:34.096 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorB - ADC = 0
+2018-12-05 15:00:34.100 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorC - ADC = 0
+2018-12-05 15:00:34.104 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorD - ADC = 0
+2018-12-05 15:00:34.108 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorE - ADC = 0
+2018-12-05 15:00:34.112 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorF - ADC = 0
+2018-12-05 15:00:34.115 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorG - ADC = 0
+2018-12-05 15:00:34.119 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorH - ADC = 0
+2018-12-05 15:00:34.123 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorI - ADC = 0
+2018-12-05 15:00:34.127 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorJ - ADC = 0
+2018-12-05 15:01:49.078 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorA - ADC = 0
+2018-12-05 15:01:49.079 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorB - ADC = 0
+2018-12-05 15:01:49.080 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorC - ADC = 0
+2018-12-05 15:01:49.082 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorD - ADC = 0
+2018-12-05 15:01:49.083 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorE - ADC = 0
+2018-12-05 15:01:49.084 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorF - ADC = 0
+2018-12-05 15:01:49.086 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorG - ADC = 0
+2018-12-05 15:01:49.087 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorH - ADC = 0
+2018-12-05 15:01:49.089 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorI - ADC = 0
+2018-12-05 15:01:49.090 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorJ - ADC = 0
+2018-12-05 15:01:50.832 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorA - ADC = 0
+2018-12-05 15:01:50.833 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorB - ADC = 0
+2018-12-05 15:01:50.834 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorC - ADC = 0
+2018-12-05 15:01:50.836 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorD - ADC = 0
+2018-12-05 15:01:50.838 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorE - ADC = 0
+2018-12-05 15:01:50.841 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorF - ADC = 0
+2018-12-05 15:01:50.843 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorG - ADC = 0
+2018-12-05 15:01:50.845 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorH - ADC = 0
+2018-12-05 15:01:50.846 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorI - ADC = 0
+2018-12-05 15:01:50.847 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorJ - ADC = 0
+2018-12-05 15:01:56.294 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorA - ADC = 0
+2018-12-05 15:01:56.295 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorB - ADC = 0
+2018-12-05 15:01:56.297 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorC - ADC = 0
+2018-12-05 15:01:56.299 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorD - ADC = 0
+2018-12-05 15:01:56.301 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorE - ADC = 0
+2018-12-05 15:01:56.302 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorF - ADC = 0
+2018-12-05 15:01:56.303 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorG - ADC = 0
+2018-12-05 15:01:56.304 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorH - ADC = 0
+2018-12-05 15:01:56.307 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorI - ADC = 0
+2018-12-05 15:01:56.308 ERROR [10188] [exoActuator::GetCurrentPosition@181] ERROR: SensorJ - ADC = 0
+2018-12-05 15:10:40.405 DEBUG [9300] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-12-06 14:51:35.778 DEBUG [7444] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-12-06 14:51:50.830 ERROR [6828] [exoActuator::GetCurrentPosition@181] ERROR: SensorB - ADC = 0
+2018-12-06 14:51:50.846 ERROR [6828] [exoActuator::GetCurrentPosition@181] ERROR: SensorD - ADC = 0
+2018-12-06 14:51:50.861 ERROR [6828] [exoActuator::GetCurrentPosition@181] ERROR: SensorF - ADC = 0
+2018-12-06 14:51:50.861 ERROR [6828] [exoActuator::GetCurrentPosition@181] ERROR: SensorH - ADC = 0
+2018-12-06 14:51:50.861 ERROR [6828] [exoActuator::GetCurrentPosition@181] ERROR: SensorJ - ADC = 0
+2018-12-06 14:52:35.421 DEBUG [1068] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-12-06 14:54:19.102 ERROR [7916] [exoActuator::DriveProtection@109] ERROR: ActuatorG - Drive Protection. ErrorPosition: 0
+2018-12-06 14:55:03.410 DEBUG [7700] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-12-06 14:55:16.898 ERROR [7876] [exoActuator::DriveProtection@109] ERROR: ActuatorG - Drive Protection. ErrorPosition: 0.0879765
+2018-12-06 14:55:36.470 DEBUG [1264] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-12-06 14:56:24.851 ERROR [5568] [exoActuator::DriveProtection@109] ERROR: ActuatorG - Drive Protection. ErrorPosition: 0
+2018-12-06 14:58:01.241 DEBUG [7824] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-12-06 15:08:25.223 DEBUG [4688] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-12-06 15:22:08.228 DEBUG [7968] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-12-06 15:31:24.121 DEBUG [7240] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-12-11 16:48:01.774 DEBUG [6508] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-12-11 16:48:25.979 ERROR [1868] [exoActuator::DriveProtection@109] ERROR: ActuatorA - Drive Protection. ErrorPosition: 0
+2018-12-11 16:50:38.379 DEBUG [3892] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-12-11 16:52:15.790 ERROR [4644] [exoActuator::DriveProtection@109] ERROR: ActuatorG - Drive Protection. ErrorPosition: 0
+2018-12-11 16:57:08.370 DEBUG [8132] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-12-11 16:57:30.993 ERROR [2612] [exoActuator::DriveProtection@109] ERROR: ActuatorA - Drive Protection. ErrorPosition: 0
+2018-12-11 16:59:29.834 DEBUG [6892] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-12-11 17:05:04.505 DEBUG [7424] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-12-11 17:10:55.431 DEBUG [8472] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442
+2018-12-11 17:19:20.307 DEBUG [9200] [exoUDPServer::exoUDPServer@10] Starting asynchronous UDP server. Port: 4442

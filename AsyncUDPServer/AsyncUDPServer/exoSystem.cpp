@@ -124,7 +124,7 @@ void exoSystem::ControlFlow(uint32_t t)
 			for (int i = 0; i < ActuatorSize; i++)
 			{
 				Actuator[i].PIDRegulator(t);
-
+				
 				// Защита от обрыва датчика
 				if (Actuator[i].DriveProtection(t))
 				{
@@ -137,6 +137,8 @@ void exoSystem::ControlFlow(uint32_t t)
 					ERROR_ = SENSORERROR;
 					StopAll();
 				}
+				
+				
 			}
 		#endif // USE_VREP
 
