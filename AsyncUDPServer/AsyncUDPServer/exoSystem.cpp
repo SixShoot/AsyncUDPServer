@@ -50,13 +50,44 @@ exoSystem::exoSystem(std::vector<exoModule*>& exoModules) : exoModules_(exoModul
 		Actuator[i].Init(smName[i], Motors[i], Sensor[i]);
 	}
 	
-	//sPatterns.OpenPatterns("E:\\Antipov\\Walk_1720_Theta4Active\\Pattern_Step1.txt");
+	pattern::ServicePatterns sPatterns;
+	sPatterns.Name = "Первый шаг";
+	sPatterns.OpenPatterns("E:\\Antipov\\C++\\AsyncUDPServer\\AsyncUDPServer\\AsyncUDPServer\\Patterns\\Первый шаг.txt");
+	PatternList.push_back(sPatterns);
+
+	sPatterns.Name = "Сесть";
 	sPatterns.OpenPatterns("C:\\Users\\Антипов\\Downloads\\ExoPatterns\\Сесть.txt");
+	PatternList.push_back(sPatterns);
+	//sPatterns.OpenPatterns("E:\\Antipov\\Walk_1720_Theta4Active\\Pattern_Step1.txt");
+	//sPatterns.OpenPatterns("C:\\Users\\Антипов\\Downloads\\ExoPatterns\\Сесть.txt");
+	
 
 	// Инициализация реле
 	PowerOn_Handle = Nucleo->server_pack.init<uint8_t>("ULN");
 }
 //------------------------------------------------------------------------------------------------------
+void exoSystem::SetInitPosition()
+{
+	for (int i = 0; i < ActuatorSize; i++)
+	{
+		Actuator[i].SetTargetPosition(Actuator[i].GetCurrentPosition());
+	}
+	
+	/*
+	Actuator[0].SetTargetPosition(0);
+	Actuator[1].SetTargetPosition(0);
+	Actuator[2].SetTargetPosition(0);
+	Actuator[3].SetTargetPosition(0);
+	Actuator[4].SetTargetPosition(10);
+	Actuator[5].SetTargetPosition(10);
+	Actuator[6].SetTargetPosition(0);
+	Actuator[7].SetTargetPosition(0);
+	Actuator[8].SetTargetPosition(0);
+	Actuator[9].SetTargetPosition(0);
+	*/
+}
+//------------------------------------------------------------------------------------------------------
+
 
 // Запуск ExoSystem
 void exoSystem::run()
@@ -69,8 +100,7 @@ void exoSystem::run()
 		boost::this_thread::sleep(boost::posix_time::millisec(200));
 	}
 	
-	
-	
+	SetInitPosition();
 	
 	boost::posix_time::ptime mst1 = boost::posix_time::microsec_clock::local_time();
 	boost::posix_time::ptime mst2 = mst1;
@@ -153,7 +183,9 @@ void exoSystem::ControlFlow(uint32_t t)
 			IK.GetCurrentAngles(Actuator, ActuatorSize, t);
 			break;
 		case PATTERNS_DATA:		 // Задающие генерируются из файла паттернов exolite txt
-			sPatterns.GetCurrentAngles(Actuator, ActuatorSize, t / 100.0);
+			if(CurrentIndexPattern != -1)
+				PatternList[CurrentIndexPattern].GetCurrentAngles(Actuator, ActuatorSize, t / 100.0);
+			//sPatterns.GetCurrentAngles(Actuator, ActuatorSize, t / 100.0);
 			//LOGD << "Time: " << t;
 			break;
 		default:

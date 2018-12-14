@@ -180,13 +180,29 @@ struct pattern_command : command
 {
 	virtual void exec(args_type const& args) const override
 	{
-		if (args[0] == "start")
+		if (args[0] == "list")
 		{
-			pExo_system->sPatterns.StartPattern();
+			for (int i = 0; i < pExo_system->PatternList.size(); i++) 
+				std::cout << i << " : " << pExo_system->PatternList[i].Name << std::endl;
+			
+			//pExo_system->sPatterns.StartPattern();
+		}
+		else if (args[0] == "start")
+		{
+			int Number = 0;
+			std::istringstream ist(args[1]);
+			ist >> Number;
+
+			if (pExo_system->CurrentIndexPattern != -1) pExo_system->PatternList[pExo_system->CurrentIndexPattern].StopPattern();
+			pExo_system->CurrentIndexPattern = Number;
+
+			pExo_system->PatternList[pExo_system->CurrentIndexPattern].StartPattern();
+			
+			//pExo_system->sPatterns.StopPattern();
 		}
 		else if (args[0] == "stop")
 		{
-			pExo_system->sPatterns.StopPattern();
+			if (pExo_system->CurrentIndexPattern != -1) pExo_system->PatternList[pExo_system->CurrentIndexPattern].StopPattern();
 		}
 	}
 };

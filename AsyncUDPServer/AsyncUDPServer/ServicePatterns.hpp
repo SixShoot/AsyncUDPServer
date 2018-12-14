@@ -17,6 +17,8 @@ namespace pattern
 	public:
 		//double Angle[10];
 
+		std::string Name;
+
 		//------------------------------------------------------------------------------
 		ServicePatterns()
 		{
@@ -105,6 +107,8 @@ namespace pattern
 
 		uint32_t SolverStartTime;
 		bool isRun;
+
+		
 
 	};
 

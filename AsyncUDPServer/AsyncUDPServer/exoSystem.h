@@ -30,7 +30,10 @@ class exoSystem
 {
 public:
 	exoActuator   Actuator[ActuatorSize];
-	pattern::ServicePatterns sPatterns;
+	
+	std::vector<pattern::ServicePatterns> PatternList;
+	int CurrentIndexPattern = -1;
+
 
 	exoSystem(std::vector<exoModule*>& exoModules);
 
@@ -38,7 +41,9 @@ public:
 	void ControlFlow(uint32_t t);
 	exoModule& GetExoModule(std::string name); 
 	bool GetStutusConnectAllModules();
-	
+
+
+	void SetInitPosition();
 
 	void SetPowerOn(uint8_t pon); // ¬ключить реле
 	void StopAll(); // ќстановить всЄ.
