@@ -51,6 +51,8 @@ namespace pattern
 				}
 			}
 
+			//file.clear();
+			file.close();
 		}
 		//---------------------------------------------------------------
 		double GetLine(double y1, double y2, double t1, double t2, double t)

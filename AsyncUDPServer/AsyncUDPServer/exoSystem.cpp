@@ -51,13 +51,20 @@ exoSystem::exoSystem(std::vector<exoModule*>& exoModules) : exoModules_(exoModul
 	}
 	
 	pattern::ServicePatterns sPatterns;
-	sPatterns.Name = "Первый шаг";
-	sPatterns.OpenPatterns("E:\\Antipov\\C++\\AsyncUDPServer\\AsyncUDPServer\\AsyncUDPServer\\Patterns\\Первый шаг.txt");
+	sPatterns.Name = "Встать";
+	sPatterns.OpenPatterns("E:\\Antipov\\C++\\AsyncUDPServer\\AsyncUDPServer\\AsyncUDPServer\\Patterns\\Встать.txt");
 	PatternList.push_back(sPatterns);
 
 	sPatterns.Name = "Сесть";
-	sPatterns.OpenPatterns("C:\\Users\\Антипов\\Downloads\\ExoPatterns\\Сесть.txt");
+	sPatterns.OpenPatterns("E:\\Antipov\\C++\\AsyncUDPServer\\AsyncUDPServer\\AsyncUDPServer\\Patterns\\Сесть.txt");
 	PatternList.push_back(sPatterns);
+
+	sPatterns.Name = "Первый шаг";
+	sPatterns.OpenPatterns("E:\\Antipov\\C++\\AsyncUDPServer\\AsyncUDPServer\\AsyncUDPServer\\Patterns\\ПервыйШаг.txt");
+	PatternList.push_back(sPatterns);
+
+
+
 	//sPatterns.OpenPatterns("E:\\Antipov\\Walk_1720_Theta4Active\\Pattern_Step1.txt");
 	//sPatterns.OpenPatterns("C:\\Users\\Антипов\\Downloads\\ExoPatterns\\Сесть.txt");
 	
