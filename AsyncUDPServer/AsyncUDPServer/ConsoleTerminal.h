@@ -172,6 +172,13 @@ struct set_command : command
 
 			}
 		}
+		else if (args.size() == 1)
+		{
+			if (args[0] == "init")
+			{
+				pExo_system->SetInitPosition();
+			}
+		}
 	}
 };
 //------------------------------------------------------

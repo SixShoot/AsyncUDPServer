@@ -130,6 +130,7 @@
     <ClInclude Include="ConsoleTerminal.h" />
     <ClInclude Include="exoActuator.hpp" />
     <ClInclude Include="exoModule.h" />
+    <ClInclude Include="exoMonitor.hpp" />
     <ClInclude Include="exoMotor.hpp" />
     <ClInclude Include="exoPackage.hpp" />
     <ClInclude Include="exoSensor.hpp" />

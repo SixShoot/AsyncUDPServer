@@ -28,6 +28,9 @@ exoSystem::exoSystem(std::vector<exoModule*>& exoModules) : exoModules_(exoModul
 
 	Nucleo = &GetExoModule("Nucleo"); // Получаем указатель на обьект Nucleo
 	
+	// Экзомонитор
+	ExoMonitor.Init(GetExoModule("PC"));
+	
 	for (int i = 0; i < ActuatorSize; i++)
 	{
 		// Инициализация сенсоров
@@ -60,7 +63,7 @@ exoSystem::exoSystem(std::vector<exoModule*>& exoModules) : exoModules_(exoModul
 	PatternList.push_back(sPatterns);
 
 	sPatterns.Name = "Первый шаг";
-	sPatterns.OpenPatterns("E:\\Antipov\\C++\\AsyncUDPServer\\AsyncUDPServer\\AsyncUDPServer\\Patterns\\ПервыйШаг.txt");
+	sPatterns.OpenPatterns("E:\\Antipov\\IK_EXO_3D\\Pattern_Sit.txt");
 	PatternList.push_back(sPatterns);
 
 
@@ -73,29 +76,40 @@ exoSystem::exoSystem(std::vector<exoModule*>& exoModules) : exoModules_(exoModul
 	PowerOn_Handle = Nucleo->server_pack.init<uint8_t>("ULN");
 }
 //------------------------------------------------------------------------------------------------------
-void exoSystem::SetInitPosition()
+void exoSystem::SetCurrentPosition()
 {
 	for (int i = 0; i < ActuatorSize; i++)
 	{
 		Actuator[i].SetTargetPosition(Actuator[i].GetCurrentPosition());
 	}
-	
-	/*
+}
+//-------------------------------------------------------------------------------------------------------
+void exoSystem::SetInitPosition()
+{
 	Actuator[0].SetTargetPosition(0);
 	Actuator[1].SetTargetPosition(0);
 	Actuator[2].SetTargetPosition(0);
 	Actuator[3].SetTargetPosition(0);
-	Actuator[4].SetTargetPosition(10);
-	Actuator[5].SetTargetPosition(10);
+	Actuator[4].SetTargetPosition(8);
+	Actuator[5].SetTargetPosition(8);
 	Actuator[6].SetTargetPosition(0);
 	Actuator[7].SetTargetPosition(0);
 	Actuator[8].SetTargetPosition(0);
 	Actuator[9].SetTargetPosition(0);
-	*/
 }
 //------------------------------------------------------------------------------------------------------
-
-
+void exoSystem::SendData_PCModule()
+{
+	for (int i = 0; i < ActuatorSize; i++)
+	{
+		std::string str = "CA"+Actuator[i].GetName();
+		//PC->server_pack.set<float>(str.c_str(), Actuator[i].GetCurrentPosition()); 
+		str = "TA" + Actuator[i].GetName();
+		//PC->server_pack.set<float>(str.c_str(), Actuator[i].SetTargetPosition());
+	}
+	
+}
+//------------------------------------------------------------------------------------------------------
 // Запуск ExoSystem
 void exoSystem::run()
 {
@@ -107,7 +121,7 @@ void exoSystem::run()
 		boost::this_thread::sleep(boost::posix_time::millisec(200));
 	}
 	
-	SetInitPosition();
+	SetCurrentPosition();
 	
 	boost::posix_time::ptime mst1 = boost::posix_time::microsec_clock::local_time();
 	boost::posix_time::ptime mst2 = mst1;
@@ -152,7 +166,6 @@ void exoSystem::StopAll() // Остановить всё.
 //---------------------------------------------------------------------------------------------------------
 void exoSystem::ControlFlow(uint32_t t)
 {
-	
 	// Проверяем статус подключения всех модулей
 	if (GetStutusConnectAllModules() && (ERROR_ == NOERROR_))
 	{		
@@ -192,8 +205,6 @@ void exoSystem::ControlFlow(uint32_t t)
 		case PATTERNS_DATA:		 // Задающие генерируются из файла паттернов exolite txt
 			if(CurrentIndexPattern != -1)
 				PatternList[CurrentIndexPattern].GetCurrentAngles(Actuator, ActuatorSize, t / 100.0);
-			//sPatterns.GetCurrentAngles(Actuator, ActuatorSize, t / 100.0);
-			//LOGD << "Time: " << t;
 			break;
 		default:
 			StopAll();
@@ -207,7 +218,7 @@ void exoSystem::ControlFlow(uint32_t t)
 	{
 		StopAll();
 	}
-	
+
 }
 //---------------------------------------------------------------------------------------------------------
 exoSystem::~exoSystem()

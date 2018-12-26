@@ -19,6 +19,7 @@
 #include "exoActuator.hpp"
 #include "ServicePatterns.hpp"
 #include "exoInverseKinematics.hpp"
+#include "exoMonitor.hpp"
 
 
 enum SolverType { EMPTY, TXTDATA, INVERSE_KINEMATICS, PATTERNS_DATA }; // Тип решателя
@@ -42,8 +43,12 @@ public:
 	exoModule& GetExoModule(std::string name); 
 	bool GetStutusConnectAllModules();
 
+	void SendData_PCModule(); // Функция отправляет все данные в PC
+
+
 
 	void SetInitPosition();
+	void SetCurrentPosition();
 
 	void SetPowerOn(uint8_t pon); // Включить реле
 	void StopAll(); // Остановить всё.
@@ -64,7 +69,7 @@ private:
 
 	//Экзомодуль
 	exoModule* Nucleo;
-
+	
 	// Служебные переменные
 	int PowerOn = 0;
 	uint8_t PowerOn_Handle = 0;
@@ -73,4 +78,6 @@ private:
 	exoInverseKinematics IK;
 	
 	SolverType СurrentSolver;
+
+	exoMonitor ExoMonitor;
 };

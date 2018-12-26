@@ -18,15 +18,17 @@
 #include "exoUDPServer.h"
 #include "ConsoleTerminal.h"
 
+
 using namespace boost::posix_time;
 
 
 boost::asio::io_service io_service;
 
-
+	
+	exoModule PC(io_service, "127.0.0.1", "PC"); // Модуль работы с PC
 #ifdef USE_VREP
 	exoModule pModule1(io_service, "127.0.0.1", "Nucleo"); // 127.0.0.1 - 192.168.0.100
-	std::vector<exoModule*> exoModules = { &pModule1 };
+	std::vector<exoModule*> exoModules = { &pModule1 , &PC };
 #else
 	exoModule pModule1(io_service, "192.168.0.102", "TeensyR");
 	exoModule pModule2(io_service, "192.168.0.104", "TeensyL");
@@ -68,6 +70,24 @@ void ThreadTerminal()
 //----------------------------------------------------------------------------------------
 int main(int argc, char* argv[])
 {
+	
+
+	/*
+	boost::asio::ip::tcp::resolver resolver(io_service);
+	boost::asio::ip::tcp::resolver::query query(boost::asio::ip::host_name(), "");
+	boost::asio::ip::tcp::resolver::iterator it = resolver.resolve(query);
+
+	while (it != boost::asio::ip::tcp::resolver::iterator())
+	{
+		boost::asio::ip::address addr = (it++)->endpoint().address();
+
+		std::cout << addr.to_string() << std::endl;
+	}
+	*/
+
+	
+	
+	
 	// Initialize the logger that will be measured.
 	plog::init(plog::debug, "logs\\log.txt", 1000000, 10); 
 
@@ -97,6 +117,8 @@ int main(int argc, char* argv[])
 	}
 
 	thread1.join();
+
+	
 	
 	return 0;
 }
