@@ -184,15 +184,15 @@ public:
 	{
 		uint16_t Value = sensor_->GetValue();
 
+		#ifdef USE_VREP
+				return Value;
+		#endif // USE_VREP
+
 		if (Value == 0) // Ошибка
 		{
 			ERROR_ = 1;
 			LOGE << "ERROR: Sensor" << GetName() << " - ADC = 0";
 		}
-
-		#ifdef USE_VREP
-			return Value;
-		#endif // USE_VREP
 
 		return map(Value,in_min,in_max,out_min,out_max);
 	}
