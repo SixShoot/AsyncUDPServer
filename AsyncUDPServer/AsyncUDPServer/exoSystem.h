@@ -1,7 +1,7 @@
 #pragma once
 
 
-//#define USE_VREP
+#define USE_VREP
 
 #define ActuatorSize 10
 
@@ -42,10 +42,6 @@ public:
 	void ControlFlow(uint32_t t);
 	exoModule& GetExoModule(std::string name); 
 	bool GetStutusConnectAllModules();
-
-	void SendData_PCModule(); // Функция отправляет все данные в PC
-
-
 
 	void SetInitPosition();
 	void SetCurrentPosition();

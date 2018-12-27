@@ -65,11 +65,6 @@ exoSystem::exoSystem(std::vector<exoModule*>& exoModules) : exoModules_(exoModul
 	sPatterns.Name = "Первый шаг";
 	sPatterns.OpenPatterns("E:\\Antipov\\IK_EXO_3D\\Pattern_Sit.txt");
 	PatternList.push_back(sPatterns);
-
-
-
-	//sPatterns.OpenPatterns("E:\\Antipov\\Walk_1720_Theta4Active\\Pattern_Step1.txt");
-	//sPatterns.OpenPatterns("C:\\Users\\Антипов\\Downloads\\ExoPatterns\\Сесть.txt");
 	
 
 	// Инициализация реле
@@ -96,18 +91,6 @@ void exoSystem::SetInitPosition()
 	Actuator[7].SetTargetPosition(0);
 	Actuator[8].SetTargetPosition(0);
 	Actuator[9].SetTargetPosition(0);
-}
-//------------------------------------------------------------------------------------------------------
-void exoSystem::SendData_PCModule()
-{
-	for (int i = 0; i < ActuatorSize; i++)
-	{
-		std::string str = "CA"+Actuator[i].GetName();
-		//PC->server_pack.set<float>(str.c_str(), Actuator[i].GetCurrentPosition()); 
-		str = "TA" + Actuator[i].GetName();
-		//PC->server_pack.set<float>(str.c_str(), Actuator[i].SetTargetPosition());
-	}
-	
 }
 //------------------------------------------------------------------------------------------------------
 // Запуск ExoSystem
@@ -147,7 +130,7 @@ void exoSystem::SetPowerOn(uint8_t pon)
 bool exoSystem::GetStutusConnectAllModules()
 {
 	int count = 0;
-	for (int i = 0; i < exoModules_.size(); i++) if (exoModules_[i]->GetConnectStatus()) count++;
+	for (int i = 0; i < exoModules_.size(); i++) if (exoModules_[i]->GetConnectStatus() || exoModules_[i]->GetName() == "PC") count++;
 
 	if (count == exoModules_.size()) return true;
 	else return false;
@@ -212,7 +195,8 @@ void exoSystem::ControlFlow(uint32_t t)
 		}
 		
 		
-		SetPowerOn(1); // Включаем реле		
+		SetPowerOn(1); // Включаем реле	
+		ExoMonitor.SendData(Actuator,t);
 	}
 	else
 	{

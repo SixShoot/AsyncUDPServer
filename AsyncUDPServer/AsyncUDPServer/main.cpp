@@ -25,9 +25,9 @@ using namespace boost::posix_time;
 boost::asio::io_service io_service;
 
 	
-	exoModule PC(io_service, "127.0.0.1", "PC"); // Модуль работы с PC
+	exoModule PC(io_service, "127.0.0.1", 4440 , "PC"); // Модуль работы с PC
 #ifdef USE_VREP
-	exoModule pModule1(io_service, "127.0.0.1", "Nucleo"); // 127.0.0.1 - 192.168.0.100
+	exoModule pModule1(io_service, "127.0.0.1", 4443 ,"Nucleo"); // 127.0.0.1 - 192.168.0.100
 	std::vector<exoModule*> exoModules = { &pModule1 , &PC };
 #else
 	exoModule pModule1(io_service, "192.168.0.102", "TeensyR");

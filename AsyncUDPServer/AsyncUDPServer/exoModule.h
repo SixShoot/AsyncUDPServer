@@ -21,9 +21,10 @@ public:
 
 	void Timer1_Hendle(const boost::system::error_code& /*e*/, boost::asio::deadline_timer* t);
 
-	exoModule(boost::asio::io_context& io_context, std::string str_ip, std::string name);
+	exoModule(boost::asio::io_context& io_context, std::string str_ip, unsigned short port, std::string name);
 
 	boost::asio::ip::address GetIpAddress();
+	unsigned short GetPort();
 
 	int GetNumberReceivPack();
 	std::string GetName();
@@ -42,6 +43,7 @@ public:
 
 private:
 	boost::asio::ip::address ip;
+	unsigned short port_;
 	std::string name_;
 
 	boost::asio::deadline_timer Timer1;

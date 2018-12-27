@@ -162,6 +162,7 @@ public:
 	//-----------------------------------------------------------------------------
 	void SetTargetPosition(float angle)
 	{
+		
 		// Если используем симулятор
 		#ifdef USE_VREP
 			SetTargetPosition_VREP(angle);
@@ -169,6 +170,14 @@ public:
 		#else
 			TargetAngle = angle;
 		#endif // USE_VREP
+		
+		//TargetAngle = angle;
+		//SetTargetPosition_VREP(TargetAngle);
+	}
+	//----------------------------------------------------------------------------------
+	float GetTargetPosition()
+	{
+		return TargetAngle;
 	}
 	//----------------------------------------------------------------------------------
 	float GetCurrentPosition()

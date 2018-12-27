@@ -5,13 +5,14 @@
 #include <ctime>
 
 
-exoModule::exoModule(boost::asio::io_context& io_context, std::string str_ip, std::string name)
+exoModule::exoModule(boost::asio::io_context& io_context, std::string str_ip, unsigned short port, std::string name)
 	: Timer1(io_context, boost::posix_time::millisec(1000)), Timer_TimeOut(io_context)
 {
 	ip = boost::asio::ip::address::from_string(str_ip);
+	port_ = port;
 	name_ = name;
 	Timer1.async_wait(boost::bind(&exoModule::Timer1_Hendle, this, boost::asio::placeholders::error, &Timer1));
-	Timer_TimeOut.async_wait(boost::bind(&exoModule::Check_TimeOut, this));
+	Timer_TimeOut.async_wait(boost::bind(&exoModule::Check_TimeOut, this)); 
 
 	ConnectionStatus = false;
 }
@@ -46,6 +47,11 @@ void exoModule::Check_TimeOut()
 boost::asio::ip::address exoModule::GetIpAddress()
 {
 	return ip;
+}
+//---------------------------------------------------------------------------------------------
+unsigned short exoModule::GetPort()
+{
+	return port_;
 }
 //----------------------------------------------------------------------------------------------
 

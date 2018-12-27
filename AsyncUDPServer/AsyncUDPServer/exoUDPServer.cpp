@@ -28,7 +28,7 @@ void exoUDPServer::handle_receive(const boost::system::error_code& error, size_t
 		bool Ident = false;
 		for (int i = 0; i < exoModules_.size(); i++)
 		{
-			if (exoModules_[i]->GetIpAddress() == remote_endpoint_.address())
+			if (exoModules_[i]->GetIpAddress() == remote_endpoint_.address() && exoModules_[i]->GetPort() == remote_endpoint_.port())
 			{
 				exoModules_[i]->UpdatePack();
 
@@ -53,8 +53,8 @@ void exoUDPServer::handle_receive(const boost::system::error_code& error, size_t
 			#ifdef USE_VREP
 				start_receive();
 			#else
-				std::cout << "Unknown device... IP: " << remote_endpoint_.address().to_string() << std::endl; //
-				LOGE << "Unknown device... IP: " << remote_endpoint_.address().to_string();
+				std::cout << "Unknown device... IP: " << remote_endpoint_.address().to_string() << " Port: " << remote_endpoint_.port()  << std::endl; //
+				LOGE << "Unknown device... IP: " << remote_endpoint_.address().to_string() << " Port: " << remote_endpoint_.port();
 			#endif // USE_VREP
 
 		}
